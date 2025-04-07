@@ -6,12 +6,12 @@ fun main() {
     val ironOre = 11
     val buff = 20
 
-    val crystallineOreBuff = crystallineOre * buff / percentOre
-    val ironOreBuff = ironOre * buff / percentOre
+    val crystallineOreBuff = crystallineOre * buff / PERCENT_ORE
+    val ironOreBuff = ironOre * buff / PERCENT_ORE
 
     println("Количество бонусной кристаллической руды: $crystallineOreBuff")
     println("Количество бонусной железной руды: $ironOreBuff")
 
 }
 
-    const val percentOre = 100
+    const val PERCENT_ORE = 100
