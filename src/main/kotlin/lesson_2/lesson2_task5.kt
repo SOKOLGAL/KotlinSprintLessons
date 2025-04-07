@@ -6,15 +6,13 @@ fun main() {
     val interestRate: Double = 16.7
     val depositYear = 20
 
-    val monthSum = depositYear * MONTH_IN_YEAR
     val rate: Double = interestRate / COEF
-    val rateYear = 1 + rate / 12
-    val result = Math.pow(rateYear, monthSum.toDouble())
+    val rateYear = 1 + rate
+    val result = Math.pow(rateYear, depositYear.toDouble())
     val deposit = depositMoney * result
 
     println("%.3f".format(deposit.toDouble()))
 
 }
 
-    const val MONTH_IN_YEAR = 12
     const val COEF = 100
