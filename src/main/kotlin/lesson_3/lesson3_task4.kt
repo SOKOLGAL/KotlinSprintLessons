@@ -9,7 +9,7 @@ fun main() {
     println("[$from-$where; $moveNumber]")
 
     from = "D2"
-    where = "D"+(2.toInt() + 1)
+    where = "D3"
     moveNumber++
 
     println("[$from-$where; $moveNumber]")
