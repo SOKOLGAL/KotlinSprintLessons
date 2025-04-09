@@ -1,9 +1,11 @@
 package org.example.lesson_5
 
 fun main() {
-    val example = 2 + 5
-    val rightSolution = 7
-    println("Подтвердите, что вы не бот. Решите уравнение: 2 + 5 = ? Введите ваш ответ: ")
+    val example1 = (1..10).random()
+    val example2 = (1..10).random()
+    val summary = example1 + example2
+    val rightSolution = summary
+    println("Подтвердите, что вы не бот. Решите уравнение: $example1 + $example2 = ? Введите ваш ответ: ")
     val solution = readln().toInt()
     if (solution == rightSolution) {
         println("Добро пожаловать!")
