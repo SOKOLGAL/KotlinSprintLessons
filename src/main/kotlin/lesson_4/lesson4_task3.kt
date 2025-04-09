@@ -2,16 +2,18 @@ package org.example.lesson_4
 
 fun main() {
 
-    val weather = "солнечная".toBoolean()
-    val awning = "открыт".toBoolean()
-    val airHumidity = 20
-    val currentSeason = "не зима"
-
-    val weatherToday: Boolean = "солнечная".toBoolean()
-    val awningAtTheMoment: Boolean = "открыт".toBoolean()
+    val isSunnyToday = "yes"
+    val isAwningOpenToday = "yes"
     val airHumidityToday: Int = 20
-    val currentSeasonToday: String = "зима"
+    val currentSeasonToday: String = "winter"
 
-    val resultAnalysisConditions = (weatherToday == weather) && (awningAtTheMoment == awning) && (airHumidityToday == airHumidity) && (currentSeasonToday == currentSeason)
+    val resultAnalysisConditions = (isSunnyToday == IS_SUNNY) && (isAwningOpenToday == IS_AWNING_OPEN)
+            && (airHumidityToday == AIR_HUMIDITY) && (currentSeasonToday !== CURRENT_SEASON)
+
     println("Благоприятные ли условия сейчас для роста бобовых? $resultAnalysisConditions")
+
 }
+    const val IS_SUNNY = "yes"
+    const val IS_AWNING_OPEN = "yes"
+    const val AIR_HUMIDITY = 20
+    const val CURRENT_SEASON = "winter"
