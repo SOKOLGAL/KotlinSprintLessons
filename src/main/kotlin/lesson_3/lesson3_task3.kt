@@ -1,14 +1,11 @@
 package org.example.lesson_3
 
-import kotlin.time.times
-
 fun main() {
 
-    val number = readln().toInt()
+    val number = 6
+    val range = 1..10
+    println("$number * ${range} = ")
+//    ${number range}
 
-    for (i in 1..10) {
-        val result = number * i
-        println("$number * $i = $result")
-    }
 
 }
