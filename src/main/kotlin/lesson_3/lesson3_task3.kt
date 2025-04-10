@@ -2,11 +2,20 @@ package org.example.lesson_3
 
 fun main() {
 
-    val number = 6
-    val rangeOfNumber = 1 until 10
-    println("$rangeOfNumber")
-    println("$number * $rangeOfNumber. = ")
-//    ${$number * $rangeOfNumber}
-//    ${number range}
+    val number = 5
+
+    val multiString = """
+    $number * 1 = ${number * 1}
+    $number * 2 = ${number * 2}
+    $number * 3 = ${number * 3}
+    $number * 4 = ${number * 4}
+    $number * 5 = ${number * 5}
+    $number * 6 = ${number * 6}
+    $number * 7 = ${number * 7}
+    $number * 8 = ${number * 8}
+    $number * 9 = ${number * 9} 
+    """.trimIndent()
+
+    println(multiString)
 
 }
