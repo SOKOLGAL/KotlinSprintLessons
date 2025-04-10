@@ -1,5 +1,7 @@
 package org.example.lesson_2
 
+import kotlin.math.pow
+
 fun main() {
 
     val depositMoney = 70000
@@ -7,9 +9,7 @@ fun main() {
     val depositYear = 20
 
     val rate: Double = interestRate / DECIMAL_CONVERSION_FACTOR
-    val rateYear = NUMBER_COMPOUND_FORMULA + rate
-    val result = Math.pow(rateYear, depositYear.toDouble())
-    val deposit = depositMoney * result
+    val deposit = depositMoney * (NUMBER_COMPOUND_FORMULA + rate).pow(depositYear)
 
     println("%.3f".format(deposit.toDouble()))
 
