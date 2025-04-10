@@ -2,14 +2,23 @@ package org.example.lesson_4
 
 fun main() {
 
-    val arrayOfExersises = arrayOf("для рук", "для ног", "для спины", "для пресса")
     val trainingDay = 5
-    val even = trainingDay % 2
-    val trainingHandsPress = even !== 0
-    val trainingLegsBack = even == 1
+    val isEven = trainingDay % 2
 
-    for (i in arrayOfExersises) {
-            println("Упражнения $i: ${(trainingHandsPress) or (trainingLegsBack)}")
-        }
+    val trainingHands = isEven == EVEN
+    val trainingPress = isEven == EVEN
+    val trainingLegs = isEven !== EVEN
+    val trainingBack = isEven !== EVEN
+
+    val multiString = """
+        Упражнения для рук:    $trainingHands
+        Упражнения для ног:    $trainingLegs
+        Упражнения для спины:  $trainingBack
+        Упражнения для пресса: $trainingPress
+    """.trimIndent()
+
+    println(multiString)
 
 }
+
+const val EVEN = 1
