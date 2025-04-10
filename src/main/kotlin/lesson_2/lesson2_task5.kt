@@ -11,7 +11,7 @@ fun main() {
     val rate: Double = interestRate / DECIMAL_CONVERSION_FACTOR
     val deposit = depositMoney * (NUMBER_COMPOUND_FORMULA + rate).pow(depositYear)
 
-    println("%.3f".format(deposit.toDouble()))
+    println("%.3f".format(deposit))
 
 }
 
