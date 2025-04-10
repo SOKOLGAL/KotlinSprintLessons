@@ -10,11 +10,10 @@ fun main() {
 
     if (number1 == winNum1 && number2 == winNum2) {
         println("Поздравляем! Вы выиграли главный приз!")
-    } else if (number1 == winNum1 && number2 !== winNum2) {
+    } else if (number1 == winNum1 && number2 !== winNum2 || number1 !== winNum1 && number2 == winNum2) {
         println("Вы выиграли утешительный приз!")
-    } else if (number1 !== winNum1 && number2 == winNum2) {
-        println("Вы выиграли утешительный приз!")
-    } else println("Неудача!")
+    }  else println("Неудача!")
+
 
     println("Для победы нужны были числа: $winNum1 и $winNum2!")
 }
