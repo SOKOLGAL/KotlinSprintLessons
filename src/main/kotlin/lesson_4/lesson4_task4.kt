@@ -3,22 +3,15 @@ package org.example.lesson_4
 fun main() {
 
     val trainingDay = 5
-    val isEven = trainingDay % 2
-
-    val trainingHands = isEven == EVEN
-    val trainingPress = isEven == EVEN
-    val trainingLegs = isEven !== EVEN
-    val trainingBack = isEven !== EVEN
+    val isEven = (trainingDay % 2 == 0)
 
     val multiString = """
-        Упражнения для рук:    $trainingHands
-        Упражнения для ног:    $trainingLegs
-        Упражнения для спины:  $trainingBack
-        Упражнения для пресса: $trainingPress
+        Упражнения для рук:    ${!isEven}
+        Упражнения для ног:    $isEven
+        Упражнения для спины:  $isEven
+        Упражнения для пресса: ${!isEven}
     """.trimIndent()
 
     println(multiString)
 
 }
-
-const val EVEN = 1
