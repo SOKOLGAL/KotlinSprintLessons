@@ -11,12 +11,12 @@ fun main() {
     println("Погода благоприятная (true/falce)?")
     var weatherConditions = readln().toBoolean()
 
-    val presenceOfDamage1: Boolean = getPresenceOfDamage().toBoolean() == PRESENCE_OF_DAMAGE
-    val presenceOfDamage2: Boolean = getPresenceOfDamage().toBoolean() !== PRESENCE_OF_DAMAGE
-    val currentCrewComposition1 = (getCurrentCrewComposition() >= CURRENT_CREW_COMPOSITION)
-    val numOfBoxesWithProvisions1 = getNumOfBoxesWithProvisions() >= NUM_OF_BOXES_WITH_PROVISIONS
-    val wether: Boolean = getWeatherConditions().toBoolean() == WEATHER_CONDITIONS
-    val wether1: Boolean = getWeatherConditions().toBoolean() !== WEATHER_CONDITIONS
+    val presenceOfDamage1: Boolean = presenceOfDamage == PRESENCE_OF_DAMAGE
+    val presenceOfDamage2: Boolean = presenceOfDamage !== PRESENCE_OF_DAMAGE
+    val currentCrewComposition1 = currentCrewComposition >= CURRENT_CREW_COMPOSITION
+    val numOfBoxesWithProvisions1 = numOfBoxesWithProvisions >= NUM_OF_BOXES_WITH_PROVISIONS
+    val wether: Boolean = weatherConditions == WEATHER_CONDITIONS
+    val wether1: Boolean = weatherConditions !== WEATHER_CONDITIONS
 
 
     val resultAnalysisConditions = (presenceOfDamage1 || presenceOfDamage2) &&
@@ -31,7 +31,3 @@ const val CURRENT_CREW_COMPOSITION = 55
 const val NUM_OF_BOXES_WITH_PROVISIONS = 50
 const val WEATHER_CONDITIONS = true
 
-fun getPresenceOfDamage() = readLine()
-fun getCurrentCrewComposition() = readLine()
-fun getNumOfBoxesWithProvisions() = readLine()
-fun getWeatherConditions() = readLine()
