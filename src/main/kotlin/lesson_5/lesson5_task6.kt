@@ -1,3 +1,7 @@
+package org.example.lesson_5
+
+import kotlin.math.pow
+
 fun main() {
 
     println("Введите ваш вес в кг:")
