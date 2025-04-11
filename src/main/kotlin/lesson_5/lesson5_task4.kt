@@ -9,7 +9,6 @@ fun main() {
         println("Введите ваш пароль:")
     } else {
         println("Необходимо зарегистрироваться")
-
     }
 
     val password = readln()
@@ -21,8 +20,6 @@ fun main() {
     }
 
 }
-
-
 
 const val USERNAME = "Zaphod"
 const val PASSWORD = "PanGalactic"
