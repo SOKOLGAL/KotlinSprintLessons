@@ -6,41 +6,34 @@ fun main() {
     val number1 = readln().toInt()
     val number2 = readln().toInt()
     val number3 = readln().toInt()
-//    val example1 = (1..42).random()
-//    val example2 = (1..42).random()
-//    val example3 = (1..42).random()
-//    val exNum1 = example1
-//    val exNum2 = example2
-//    val exNum3 = example3
-    getNumber1().toInt()
-    getNumber2().toInt()
-    getNumber3().toInt()
-    val numFromUser1 = getNumber1().toInt()
-    val numFromUser2 = getNumber2().toInt()
-    val numFromUser3 = getNumber3().toInt()
+    val example1 = 3
+//        (1..42).random()
+    val example2 = 4
+//        (1..42).random()
+    val example3 = 5
+//        (1..42).random()
+    val winNum1 = example1
+    val winNum2 = example2
+    val winNum3 = example3
+    val num = listOf(number1, number2, number3)
+    val winNum = listOf(example1, example2, example3)
+    val result = num.intersect(winNum)
 
-//        print (numFromUser1, numFromUser2, numFromUser3)
-    printNumFromUser(numFromUser1, numFromUser2, numFromUser3)
+    println(result)
+    if (num == winNum) {
+        println("Поздравляем! Вы отгадали все числа и выиграли джекпот!")
+    } else
+        if (number1 == winNum1 || number1 == winNum2 || number1 == winNum3
+        && number2 !== winNum1 || number2 !== winNum2 || number2 !== winNum3 &&
+        number1 !== winNum1 || number1 !== winNum2 && number2 == winNum1 || number2 == winNum2) {
+        println("Вы отгадали два числа и получаете крупный приз!")
+      }      else
+            if (number1 == winNum1 || number1 == winNum2 || number1 == winNum3
+                && number2 !== winNum1 || number2 !== winNum2 || number2 !== winNum3 &&
+                number1 !== winNum1 || number1 !== winNum2 && number2 == winNum1 || number2 == winNum2) {
+                println("Вы отгадали одно число и получаете утешительный приз!")
+    }  else {println("Вы не угадали ни одного числа!")}
 
-//    val winNum1 = example1
-//    val winNum2 = example2
-//    val winNum3 = example3
-//    println(example1)
-//    println(example2)
-//    println(example3)
+    println("Для победы нужны были числа: $example1, $example2 и $example3!")
 
-//    if (number1 == winNum1 && number2 == winNum2) {
-//        println("Поздравляем! Вы выиграли главный приз!")
-//    } else if (number1 == winNum1 && number2 !== winNum2) {
-//        println("Вы выиграли утешительный приз!")
-//    }else if (number1 !== winNum1 && number2 == winNum2) {
-//        println("Вы выиграли утешительный приз!")
-//    } else println("Неудача!")
-}
-
-fun getNumber1() = readln().toInt()
-fun getNumber2() = readln().toInt()
-fun getNumber3() = readln().toInt()
-fun printNumFromUser(numFromUser1: Int?, numFromUser2: Int?, numFromUser3: Int?) {
-    println("$numFromUser1, $numFromUser2, $numFromUser3")
 }
