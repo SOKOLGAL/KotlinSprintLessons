@@ -7,14 +7,14 @@ fun main() {
 
     if (userName == USERNAME) {
         println("Введите ваш пароль:")
-    } else {
-        println("Необходимо зарегистрироваться")
-    }
 
-    val password = readln()
+        val password = readln()
 
-    if (password == PASSWORD) {
-        println("$userName, приветствуем вас на борту корабля \"Heart of Gold\"")
+        if (password == PASSWORD) {
+            println("$userName, приветствуем вас на борту корабля \"Heart of Gold\"")
+        } else {
+            println("Пароль неверный. Необходимо зарегистрироваться")
+        }
     } else {
         println("Необходимо зарегистрироваться")
     }
