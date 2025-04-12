@@ -11,13 +11,13 @@ fun main() {
     val bodyMassIndex = weight / ((height / CONVERT_CENTIMETERS_TO_METERS).pow(SQUARE)).toFloat()
     val bMI = "%.2f".format(bodyMassIndex)
 
-    when (bodyMassIndex) {
-        ((< UNDER_WEIGHT))-> println("Ваш ИМТ равен $bMI - это недостаточная масса тела")
-        (>= UNDER_WEIGHT && < NORMAL_BODY_WEIGHT)-> println("Ваш ИМТ равен $bMI - это нормальная масса тела")
-        (> NORMAL_BODY_WEIGHT && < OVER_WEIGHT)-> println("Ваш ИМТ равен $bMI - это избыточная масса тела")
-        ((>= OVER_WEIGHT))-> println("Ваш ИМТ равен $bMI - это ожирение")
+    val category = when {
+        bodyMassIndex < UNDER_WEIGHT -> "недостаточная масса тела"
+        bodyMassIndex < NORMAL_BODY_WEIGHT -> "нормальная масса тела"
+        bodyMassIndex < OVER_WEIGHT -> "избыточная масса тела"
+        else -> "ожирение"
     }
-
+    println("Ваш ИМТ равен $bMI - это $category")
 }
 
 const val CONVERT_CENTIMETERS_TO_METERS = 100
