@@ -8,7 +8,7 @@ fun main() {
     val winNum = List(NUM) { (1..42).random()}
     var result = num.intersect(winNum)
 
-    val category = when (result) {
+    when (result) {
         3 -> "Поздравляем! Вы отгадали все числа и выиграли джекпот!"
         2 -> "Вы отгадали два числа и получаете крупный приз!"
         1 -> "Вы отгадали одно число и получаете утешительный приз!"
