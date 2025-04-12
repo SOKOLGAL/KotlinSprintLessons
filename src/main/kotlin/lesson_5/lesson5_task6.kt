@@ -17,7 +17,7 @@ fun main() {
         println("Ваш ИМТ равен $bMI - это нормальная масса тела")
     } else if (bodyMassIndex > NORMAL_BODY_WEIGHT && bodyMassIndex < OVER_WEIGHT) {
         println("Ваш ИМТ равен $bMI - это избыточная масса тела")
-    } else if (bodyMassIndex >= OBESITY) {
+    } else if (bodyMassIndex >= OVER_WEIGHT) {
         println("Ваш ИМТ равен $bMI - это ожирение")
     }
 
@@ -28,4 +28,3 @@ const val SQUARE = 2
 const val UNDER_WEIGHT = 18.5
 const val NORMAL_BODY_WEIGHT = 25.0
 const val OVER_WEIGHT = 30
-const val OBESITY = 30
