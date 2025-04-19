@@ -4,22 +4,22 @@ import java.lang.Integer.sum
 
 fun main() {
 
-    for (i in 3 downTo 1) {
+    var numberOfAttempts = 3
+
+    do {
         val example1 = (1..9).random()
         val example2 = (1..9).random()
         val summary = sum(example1, example2)
+
         println("Подтвердите, что вы не бот. Решите уравнение: $example1 + $example2 = ? Введите ваш ответ:")
+
         val solution = readln().toInt()
-        if (solution == summary) {
-            println("Добро пожаловать!")
-            break
-        } else if (solution !== summary) {
-            println("Неверно! Попробуйте еще ${i - 1} раза")
+        solution == summary
+        println("Добро пожаловать!")
+        solution !== summary
+        println("Неверно! Попробуйте еще ${(numberOfAttempts--) - 1} раза")
 
-        }
         println("Доступ запрещен.")
-    }
-
-
+    } while (numberOfAttempts > 0)
 
 }
