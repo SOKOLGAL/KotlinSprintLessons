@@ -11,6 +11,7 @@ fun main() {
         println("Для авторизации введите ваш логин:")
         val loginNew = readln()
         login == loginNew
+
         println("Введите ваш пароль:")
         val passwordNew = readln()
         password == passwordNew
