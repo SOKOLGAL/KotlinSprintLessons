@@ -9,11 +9,10 @@ fun main() {
 
     do {
         val num = readln().toInt()
-        var result = num !== winNum
         println("Неверно. Осталось еще ${numberOfAttempts-- - 1} попытки")
-        result = num == winNum
+        val result = (num == winNum) || (numberOfAttempts > 0)
 
-    } while (numberOfAttempts > 0)
+    } while (result)
 
     println("Это была великолепная игра!")
 
