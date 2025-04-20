@@ -2,8 +2,8 @@ package org.example.lesson_7
 
 fun main() {
 
-    val a = 1000..9999
-    val authorizationCode = a.random()
+    val number = 1000..9999
+    val authorizationCode = number.random()
     println("Ваш код авторизации: ${authorizationCode}")
     println("Введите код авторизации:")
     var code = readln().toInt()
