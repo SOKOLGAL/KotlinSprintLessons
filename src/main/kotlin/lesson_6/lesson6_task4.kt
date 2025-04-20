@@ -6,16 +6,13 @@ fun main() {
     println("Отгадайте число от 1 до 9:")
     var numberOfAttempts = 5
 
-
     do {
         val num = readln().toInt()
-        val result = (num == winNum) || (numberOfAttempts > 1)
-        println("Неверно. Осталось еще ${numberOfAttempts-- - 1} попытки")
+        println("Неверно. Осталось еще ${--numberOfAttempts} попытки")
 
-    } while (result)
+    } while (num !== winNum && numberOfAttempts > 0)
 
     println("Это была великолепная игра!")
-
     println("Было загадано число: $winNum")
 
 }
