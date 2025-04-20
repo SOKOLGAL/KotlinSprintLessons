@@ -10,12 +10,12 @@ fun main() {
     do {
         println("Для авторизации введите ваш логин:")
         val loginNew = readln()
-        login == loginNew
 
         println("Введите ваш пароль:")
         val passwordNew = readln()
-        password == passwordNew
-    } while (false)
+
+        val result = login == loginNew && password == passwordNew
+    } while (!result)
 
     println("Авторизация прошла успешно")
 
