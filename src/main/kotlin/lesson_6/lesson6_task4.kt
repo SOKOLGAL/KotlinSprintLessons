@@ -9,8 +9,8 @@ fun main() {
 
     do {
         val num = readln().toInt()
+        val result = (num == winNum) || (numberOfAttempts > 1)
         println("Неверно. Осталось еще ${numberOfAttempts-- - 1} попытки")
-        val result = (num == winNum) || (numberOfAttempts > 0)
 
     } while (result)
 
