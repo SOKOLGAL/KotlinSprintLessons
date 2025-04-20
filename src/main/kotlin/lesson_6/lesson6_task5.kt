@@ -14,12 +14,11 @@ fun main() {
         println("Подтвердите, что вы не бот. Решите уравнение: $example1 + $example2 = ? Введите ваш ответ:")
 
         val solution = readln().toInt()
-        solution == summary
-        println("Добро пожаловать!")
-        solution !== summary
         println("Неверно! Попробуйте еще ${(numberOfAttempts--) - 1} раза")
+        val result = (solution == summary) && (numberOfAttempts > 0)
+        println("Добро пожаловать!")
 
-        println("Доступ запрещен.")
-    } while (numberOfAttempts > 0)
+    } while (result)
+    println("Доступ запрещен.")
 
 }
