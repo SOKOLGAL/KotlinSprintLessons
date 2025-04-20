@@ -1,13 +1,16 @@
 package org.example.lesson_7
 
+import kotlin.random.Random
+
 fun main() {
 
-    val passwordNum = List(NUMBER) { (1..9).random() }
-    val passwordLet = List(LETTER) { ('a'..'z').random() }
+    val numberOfCharacters = 6
+    val passwordNum = 1..9
+    val passwordLet = 'a'..'z'
 
-    println("Сгенерированный пароль: ${passwordLet[0]}${passwordNum[0]}${passwordLet[1]}${passwordNum[1]}${passwordLet[2]}${passwordNum[2]}")
+    for (1) {
+        val password = List(numberOfCharacters) {Random.nextInt(1, 9)
+            println("Сгенерированный пароль: ${password}")
+        }
 
-}
-
-const val NUMBER = 3
-const val LETTER = 3
+    }
