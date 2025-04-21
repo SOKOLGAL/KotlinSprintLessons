@@ -8,11 +8,14 @@ fun main() {
 
     do {
         val num = readln().toInt()
+        if (num == winNum) {
+            println("Это была великолепная игра!")
+            return
+        }
         println("Неверно. Осталось еще ${--numberOfAttempts} попытки")
 
-    } while (num !== winNum && numberOfAttempts > 0)
+    } while (numberOfAttempts > 0)
 
-    println("Это была великолепная игра!")
     println("Было загадано число: $winNum")
 
 }
