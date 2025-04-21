@@ -8,9 +8,10 @@ fun main() {
     val passwordNum = 1..9
     val passwordLet = 'a'..'z'
 
-    for (1) {
-        val password = List(numberOfCharacters) {Random.nextInt(1, 9)
-            println("Сгенерированный пароль: ${password}")
-        }
+    for (i in 0..numberOfCharacters) {
+        val pass = passwordLet.random()
+        val pass1 = passwordNum.random()
+    }
+    println("Сгенерированный пароль: $passwordLet$passwordNum")
 
     }
