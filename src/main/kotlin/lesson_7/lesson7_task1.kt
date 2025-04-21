@@ -9,9 +9,16 @@ fun main() {
     val passwordLet = 'a'..'z'
 
     for (i in 0..numberOfCharacters) {
-        val pass = passwordLet.random()
-        val pass1 = passwordNum.random()
+        passwordLet.random()
+        passwordNum.random()
+        passwordLet.random()
+        passwordNum.random()
+        passwordLet.random()
+        passwordNum.random()
+        println("Сгенерированный пароль: ${i}")
     }
-    println("Сгенерированный пароль: $passwordLet$passwordNum")
+
+//    val pass = List(numberOfCharacters) {(passwordLet.random() + passwordNum.random())}
+//    println("Сгенерированный пароль: ${i}")
 
     }
