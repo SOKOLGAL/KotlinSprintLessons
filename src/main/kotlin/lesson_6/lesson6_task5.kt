@@ -17,7 +17,7 @@ fun main() {
         println("Неверно! Попробуйте еще ${--numberOfAttempts} раза")
         println("Добро пожаловать!")
 
-    } while (solution == summary && numberOfAttempts > 0)
+    } while (solution !== summary && numberOfAttempts > 0)
 
     println("Доступ запрещен.")
 
