@@ -10,9 +10,8 @@ fun main() {
         val num = readln().toInt()
         if (num == winNum) {
             println("Это была великолепная игра!")
-            return
-        }
-        println("Неверно. Осталось еще ${--numberOfAttempts} попытки")
+            break
+        } else println("Неверно. Осталось еще ${--numberOfAttempts} попытки")
 
     } while (numberOfAttempts > 0)
 
