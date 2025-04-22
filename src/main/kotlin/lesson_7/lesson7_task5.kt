@@ -9,7 +9,7 @@ fun main() {
     val lowercaseLetters = ('a'..'z').random()
     val capitalLetters = ('A'..'Z').random()
     val numbers = ('0'..'9').random()
-    val password = mutableListOf(lowercaseLetters)
+    val password: MutableList<Char> = mutableListOf()
     password.add(lowercaseLetters)
     password.add(capitalLetters)
     password.add(numbers)
