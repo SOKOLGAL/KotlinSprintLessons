@@ -10,6 +10,7 @@ fun main() {
     if (answer == "да") {
         println("Какой ингредиент вы хотите добавить?")
         val addIngredient = readln()
+        mutableListOfIngredients.equals(addIngredient)
         mutableListOfIngredients.add(addIngredient)
     }
 
