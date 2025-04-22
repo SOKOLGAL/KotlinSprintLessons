@@ -9,7 +9,15 @@ fun main() {
     val numberOfViewsFriday = 1150
     val numberOfViewsSaturday = 1200
     val numberOfViewsSunday = 1350
-    val arrayOfNumberOfViews = intArrayOf(numberOfViewsMonday, numberOfViewsTuesday, numberOfViewsWednesday,numberOfViewsThursday, numberOfViewsFriday,numberOfViewsSaturday, numberOfViewsSunday)
+    val arrayOfNumberOfViews = intArrayOf(
+        numberOfViewsMonday,
+        numberOfViewsTuesday,
+        numberOfViewsWednesday,
+        numberOfViewsThursday,
+        numberOfViewsFriday,
+        numberOfViewsSaturday,
+        numberOfViewsSunday
+    )
 
     println("За неделю было ${arrayOfNumberOfViews.sum()} просмотров.")
 
