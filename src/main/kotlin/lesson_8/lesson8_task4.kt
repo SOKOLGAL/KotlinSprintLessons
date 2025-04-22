@@ -2,7 +2,20 @@ package org.example.lesson_8
 
 fun main() {
 
-    var arrayOfIngredients = arrayOf("яйцо", "помидор", "сыр", "грибы", "укроп", "петрушка", "соль", "перец", "болгарский перец", "сметана", "молоко", "лук")
+    var arrayOfIngredients = arrayOf(
+        "яйцо",
+        "помидор",
+        "сыр",
+        "грибы",
+        "укроп",
+        "петрушка",
+        "соль",
+        "перец",
+        "болгарский перец",
+        "сметана",
+        "молоко",
+        "лук"
+    )
 
     for (i in arrayOfIngredients) {
         println("Список ингредиентов: $i")
@@ -14,10 +27,10 @@ fun main() {
         println("Какой ингредиент вы хотите заменить в рецепте?")
         ingredientExchange = readln()
         val hasIngredient = arrayOfIngredients.contains(ingredientExchange)
-        if(hasIngredient == true) {
+        if (hasIngredient == true) {
             println("Ингредиент ${ingredientExchange} в рецепте есть")
             println("Введите ингредиент, который хотели бы добавить")
-          continue
+            continue
         } else println("Такого индгредиента нет в списке")
     } while (ingredientExchange !in arrayOfIngredients)
 
