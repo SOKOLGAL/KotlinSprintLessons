@@ -1,7 +1,6 @@
 package org.example.lesson_9
 
 fun main() {
-
     println("Введите по одному 5 ингредиентов:")
     val mutableListOfIngredients = mutableListOf("")
 
@@ -9,20 +8,17 @@ fun main() {
         val addIngredient = readln()
         mutableListOfIngredients.add(addIngredient)
         mutableListOfIngredients.filter {
-                it == addIngredient
-            }
-            println("Такой ингредиент уже введен")
+            it == addIngredient
         }
-
-//        equals(addIngredient)
-
+        mutableListOfIngredients.contains(addIngredient)
+        println("Такой ингредиент уже введен")
     }
+
+// equals(addIngredient)
+
     mutableListOfIngredients.sort()
 
     println("$mutableListOfIngredients")
-
-
-
 
 }
 
