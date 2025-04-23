@@ -2,7 +2,7 @@ package org.example.lesson_8
 
 fun main() {
 
-    var arrayOfIngredients = arrayOf(
+    val arrayOfIngredients = arrayOf(
         "яйцо",
         "помидор",
         "сыр",
@@ -16,9 +16,10 @@ fun main() {
         "молоко",
         "лук"
     )
-
+    println("Список ингредиентов: ")
     for (i in arrayOfIngredients) {
-        println("Список ингредиентов: $i")
+        println("${i}")
+
     }
 
     var ingredientExchange: String
@@ -26,11 +27,10 @@ fun main() {
     do {
         println("Какой ингредиент вы хотите заменить в рецепте?")
         ingredientExchange = readln()
-        val hasIngredient = arrayOfIngredients.contains(ingredientExchange)
-        if (hasIngredient == true) {
+
+        if (ingredientExchange in arrayOfIngredients) {
             println("Ингредиент ${ingredientExchange} в рецепте есть")
             println("Введите ингредиент, который хотели бы добавить")
-            continue
         } else println("Такого индгредиента нет в списке")
     } while (ingredientExchange !in arrayOfIngredients)
 
@@ -38,8 +38,9 @@ fun main() {
     val ingredientNew = readln()
     arrayOfIngredients[ingredientIndex] = ingredientNew
 
+    println("Готово! Вы сохранили следующий список ингредиентов: ")
     for (i in arrayOfIngredients) {
-        println("Готово! Вы сохранили следующий список ингредиентов:$i")
+        println("${i}")
     }
 
 }
