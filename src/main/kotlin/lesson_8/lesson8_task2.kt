@@ -16,15 +16,17 @@ fun main() {
         "молоко",
         "лук"
     )
+
     println("Какой ингредиент вы хотите найти?")
     val ingredient = readln()
 
     for (i in arrayOfIngredients) {
         if (ingredient in arrayOfIngredients) {
             println("Ингредиент ${ingredient} в рецепте есть")
-            break
-        } else println("Такого ингредиента в рецепте нет")
-        break
+        }
+        return
     }
+
+    println("Такого ингредиента в рецепте нет")
 
 }
