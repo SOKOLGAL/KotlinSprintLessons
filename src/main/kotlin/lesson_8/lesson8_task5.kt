@@ -4,13 +4,19 @@ fun main() {
 
     println("Введите количество планируемых ингредиентов:")
     val quantityOfIngredients = readln().toInt()
-    val arrayOfIngredients = charArrayOf()
+    val arrayOfIngredients: String = Array(quantityOfIngredients) {}.toString()
 
     println("Вводите ингредиенты по одному:")
 
-    for (i in 0..quantityOfIngredients) {
-        readln().toCharArray().also { arrayOfIngredients[i] }
+    for (i in 1..quantityOfIngredients) {
+        arrayOfIngredients[i] = readln().toString()
+        println("Полученные ингредиенты: ${arrayOfIngredients[i]}")
     }
-    println("Полученные ингредиенты: ${arrayOfIngredients}")
+
+//    println("Полученные ингредиенты: $arrayOfIngredients")
+
+}
+
+private operator fun String.set(i: Int, value: String) {
 
 }
