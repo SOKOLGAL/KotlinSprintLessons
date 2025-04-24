@@ -16,10 +16,7 @@ fun main() {
         "молоко",
         "лук"
     )
-    println("Список ингредиентов: ")
-    for (i in arrayOfIngredients) {
-       println(i)
-    }
+    println("Список ингредиентов: ${arrayOfIngredients.joinToString()}")
 
     var ingredientExchange: String
 
@@ -28,18 +25,16 @@ fun main() {
         ingredientExchange = readln()
 
         if (ingredientExchange in arrayOfIngredients) {
-            println("Ингредиент ${ingredientExchange} в рецепте есть")
+            println("Ингредиент $ingredientExchange в рецепте есть")
         } else println("Такого индгредиента нет в списке")
     } while (ingredientExchange !in arrayOfIngredients)
 
     val ingredientIndex = arrayOfIngredients.indexOf(ingredientExchange)
     println("Введите ингредиент, который хотели бы добавить")
     val ingredientNew = readln()
+
     arrayOfIngredients[ingredientIndex] = ingredientNew
 
-    println("Готово! Вы сохранили следующий список ингредиентов: ")
-    for (i in arrayOfIngredients) {
-        println(i)
-    }
+    println("Готово! Вы сохранили следующий список ингредиентов: ${arrayOfIngredients.joinToString()}")
 
 }
