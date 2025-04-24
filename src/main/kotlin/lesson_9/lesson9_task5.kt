@@ -2,23 +2,22 @@ package org.example.lesson_9
 
 fun main() {
     println("Введите по одному 5 ингредиентов:")
-    val mutableListOfIngredients = mutableListOf("")
+    val mutableListOfIngredients = mutableListOf<String>()
 
     for (i in QUANTITY_OF_INGREDIENTS downTo 1) {
         val addIngredient = readln()
         mutableListOfIngredients.add(addIngredient)
-        mutableListOfIngredients.filter {
-            it == addIngredient
-        }
-        mutableListOfIngredients.contains(addIngredient)
-        println("Такой ингредиент уже введен")
     }
 
-// equals(addIngredient)
+    val setOfIngredients = mutableListOfIngredients.toSet()
 
-    mutableListOfIngredients.sort()
+//    println("Такой ингредиент уже введен")
 
-    println("$mutableListOfIngredients")
+    val sorted = setOfIngredients.sorted()
+
+//    .capitalize()
+
+    println("$sorted")
 
 }
 
