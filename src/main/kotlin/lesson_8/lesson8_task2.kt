@@ -22,7 +22,7 @@ fun main() {
 
     for (i in arrayOfIngredients) {
         if (ingredient in arrayOfIngredients) {
-            println("Ингредиент ${ingredient} в рецепте есть")
+            println("Ингредиент $ingredient в рецепте есть")
             return
         }
     }
