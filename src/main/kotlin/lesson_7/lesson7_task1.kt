@@ -2,21 +2,17 @@ package org.example.lesson_7
 
 fun main() {
 
-    val numberOfCharacters = 6 / TWO_CHARACTER_IN_ONE_PASS_FOR
+    val numberOfCharacters = 6
     val passwordLet = 'a'..'z'
     val passwordNum = 1..9
-    var password = passwordLet + passwordNum
+    var password = ""
 
-    for (i in 1..numberOfCharacters) {
+    for (i in 1..(numberOfCharacters/ TWO_CHARACTER_IN_ONE_PASS_FOR)) {
         password += passwordLet.random()
         password += passwordNum.random()
     }
-//    for (i in 0..numberOfCharacters) {
-//        println("Сгенерированный пароль: ${passwordLet.random()}")
-//        println("Сгенерированный пароль: ${passwordNum.random()}")
-//    }
 
-    println("Сгенерированный пароль: ${password}")
+    println("Сгенерированный пароль: $password")
 
 }
 
