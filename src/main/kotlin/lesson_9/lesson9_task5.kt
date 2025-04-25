@@ -1,6 +1,7 @@
 package org.example.lesson_9
 
 fun main() {
+
     println("Введите по одному 5 ингредиентов:")
     val mutableListOfIngredients = mutableListOf<String>()
 
