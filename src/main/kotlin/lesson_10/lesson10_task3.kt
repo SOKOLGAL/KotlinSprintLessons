@@ -6,7 +6,6 @@ fun main() {
 
     val passwordLength = readln().toInt()
     val passwordGen = passwordGeneration(passwordLength.toString())
-
     println(passwordGen)
 
 }
