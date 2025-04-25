@@ -11,14 +11,9 @@ fun main() {
     }
 
     val setOfIngredients = mutableListOfIngredients.toSet()
-
-//    println("Такой ингредиент уже введен")
-
     val sorted = setOfIngredients.sorted()
 
-//    .capitalize()
-
-    println("$sorted")
+    println("${(sorted.joinToString(separator = ", ", postfix = ".")).replaceFirstChar { it.uppercase() }}")
 
 }
 
