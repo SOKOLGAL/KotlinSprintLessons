@@ -22,7 +22,7 @@ fun generatePassword(passwordLength: Int): String {
         password += specialCharacters.random()
 //        if (passwordLength % 2 == 0) {
 //
-//        } else password += specialCharacters.random()
+//        } else password += passwordNum.random()
 
     }
 
