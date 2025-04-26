@@ -12,6 +12,7 @@ fun main() {
 }
 
 fun generatePassword(passwordLength: Int): String {
+
     val specialCharacters = ' '..'/'
     val passwordNum = 0..9
     var password: String = ""
