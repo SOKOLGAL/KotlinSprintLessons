@@ -4,15 +4,12 @@ fun main() {
 
     println("Введите количество планируемых ингредиентов:")
     val quantityOfIngredients = readln().toInt()
+
     println("Вводите ингредиенты по одному:")
-    val ingredients = Array(quantityOfIngredients) {""}
+    val ingredients = Array(quantityOfIngredients) { readln() }
 
-//    val ingredients = Array(quantityOfIngredients) { readLn() }
+    val listIngredients = ingredients.toSet()
 
-    for (i in 1..quantityOfIngredients) {
-        ingredients[i] = readln()
-    }
-
-    println("Полученные ингредиенты: $ingredients")
+    println("Полученные ингредиенты: $listIngredients")
 
 }
