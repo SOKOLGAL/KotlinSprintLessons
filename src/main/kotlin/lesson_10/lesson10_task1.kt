@@ -5,7 +5,7 @@ fun main() {
     val comp = mutableListOf<Int>()
     val player = mutableListOf<Int>()
 
-    for (i in NUMBER_OF_MOVES downTo 1) {
+    for (i in NUMBER_MOVES downTo 1) {
         val moveComp = getThrowOfDice()
         println("Сейчас ход компьютера, бросаем кости, выпало $moveComp")
         comp.add(moveComp)
@@ -27,7 +27,7 @@ fun main() {
 
 }
 
-const val NUMBER_OF_MOVES = 3
+const val NUMBER_MOVES = 3
 
 //fun getThrowOfDice(): Int {
 //    val number = (1..6).random()
