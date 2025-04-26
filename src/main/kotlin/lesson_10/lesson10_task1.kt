@@ -29,7 +29,9 @@ fun main() {
 
 const val NUMBER_OF_MOVES = 3
 
-fun getThrowOfDice(): Int {
-    val number = (1..6).random()
-    return number
-}
+//fun getThrowOfDice(): Int {
+//    val number = (1..6).random()
+//    return number
+//}
+
+fun getThrowOfDice(): Int = (1..6).random()
