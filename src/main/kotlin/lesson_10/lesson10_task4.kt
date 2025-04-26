@@ -8,7 +8,7 @@ fun main() {
         val continuationOfGame = readln()
     } while (continuationOfGame == "да")
 
-   getIndex()
+    getIndex()
 
 }
 
@@ -17,6 +17,7 @@ const val NUMBER_OF_MOVES = 3
 fun getThrowOfDice(): Int = (1..6).random()
 
 fun newRound(): Int {
+
     val comp = mutableListOf<Int>()
     val player = mutableListOf<Int>()
 
@@ -29,6 +30,7 @@ fun newRound(): Int {
         val movePlayer = getThrowOfDice()
         println("Сейчас ход игрока, бросаем кости, выпало $movePlayer")
         player.add(movePlayer)
+
     }
 
     val sumComp = comp.sum()
@@ -39,16 +41,17 @@ fun newRound(): Int {
     } else if (sumComp < sumPlayer) {
         println("Победило человечество")
     } else println("Победила дружба")
-    return sumPlayer
+return sumPlayer
 }
 
 fun getIndex(sumComp: Int, sumPlayer: Int): Int {
     val numberOfWins = mutableListOf<Int>()
-    if (sumComp < sumPlayer && sumPlayer > 0) {
+        if (sumComp < sumPlayer && sumPlayer > 0) {
         numberOfWins.add(sumPlayer)
     }
-    val index = numberOfWins.last()
-    println("$index")
+    val index = numberOfWins.size
+
     println("Игра завершена. Выигрышных партий $index")
+
     return index
 }
