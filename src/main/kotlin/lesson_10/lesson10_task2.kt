@@ -1,24 +1,27 @@
 package org.example.lesson_10
 
 fun main() {
-    isLengthValid()
+
+    val result = isLengthValid()
+
+    if (result) {
+        println("Приветствуем вас")
+    } else println("Логин или пароль недостаточно длинные")
 
 }
 
 fun isLengthValid(): Boolean {
+
     println("Придумайте логин:")
     val login = readln()
+
     println("Придумайте пароль:")
     val password = readln()
-    login.length
-    password.length
-    val result =
-        login.toInt() >= MINIMUM_NUMBER_OF_CHARACTERS || password.toInt() >= MINIMUM_NUMBER_OF_CHARACTERS
-    if (true) {
-        println("Приветствуем вас")
-    } else println("Логин или пароль недостаточно длинные")
+
+    val result = login.length >= MINIMUM_NUMBER_OF_CHARACTERS && password.length >= MINIMUM_NUMBER_OF_CHARACTERS
 
     return result
+
 }
 
 const val MINIMUM_NUMBER_OF_CHARACTERS = 4
