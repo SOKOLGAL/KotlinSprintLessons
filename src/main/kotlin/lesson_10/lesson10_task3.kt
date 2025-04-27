@@ -18,12 +18,11 @@ fun generatePassword(passwordLength: Int): String {
     var password: String = ""
 
     for (i in 1..passwordLength / TWO_CHARACTER_IN_ONE_PASS_FOR) {
-
-        if (passwordLength % 2 == 0) {
-            password += passwordNum.random()
-            password += specialCharacters.random()
-        } else password += specialCharacters.random()
-
+        password += passwordNum.random()
+        password += specialCharacters.random()
+    }
+    if (passwordLength % 2 != 0) {
+        password += passwordNum.random()
     }
 
     return password
