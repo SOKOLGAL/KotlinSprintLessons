@@ -8,8 +8,6 @@ fun main() {
     println("Вводите ингредиенты по одному:")
     val ingredients = Array(quantityOfIngredients) { readln() }
 
-    val listIngredients = ingredients.toSet()
-
-    println("Полученные ингредиенты: $listIngredients")
+    println("Полученные ингредиенты: ${ingredients.joinToString()}")
 
 }
