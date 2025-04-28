@@ -21,6 +21,7 @@ fun main() {
     println(user1.password)
     println(user1.mail)
     println()
+
     println(user2.id)
     println(user2.login)
     println(user2.password)
