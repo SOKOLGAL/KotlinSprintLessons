@@ -21,6 +21,7 @@ fun generatePassword(passwordLength: Int): String {
         password += passwordNum.random()
         password += specialCharacters.random()
     }
+
     if (passwordLength % 2 != 0) {
         password += passwordNum.random()
     }
