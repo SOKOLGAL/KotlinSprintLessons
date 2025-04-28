@@ -2,7 +2,7 @@ package org.example.lesson_10
 
 fun main() {
 
-    val sumPlayerWin = mutableListOf<Int>()
+    var playerWins = 0
 
     do {
         val moveComp = getThrowOfDice()
@@ -18,24 +18,26 @@ fun main() {
         }
 
         if (moveComp < movePlayer) {
-            sumPlayerWin.add(1)
+            playerWins++
         }
 
-        val continuationOfGame = newRound()
+        val result = newRound()
 
-    } while (continuationOfGame == "да")
+    } while (result)
 
-    println("Игра завершена. Выигрышных партий ${sumPlayerWin.sum()}")
+    println("Игра завершена. Выигрышных партий $playerWins")
 
 }
 
 fun getThrowOfDice(): Int = (1..6).random()
 
-fun newRound(): String {
+fun newRound(): Boolean {
 
     println("Хотите бросить кости еще раз? Введите да или нет")
 
     val continuationOfGame = readln()
 
-    return continuationOfGame
+    val result = continuationOfGame.lowercase() == "да"
+
+    return result
 }
