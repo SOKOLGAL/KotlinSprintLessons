@@ -2,27 +2,26 @@ package org.example.lesson_10
 
 fun main() {
 
-    val successfulAuthorization = passAufhorization()
+    val successfulAuthorization = passAuthorization()
     accessToken()
     getBasket()
 
 }
 
-fun passAufhorization(): Boolean {
-
-
+fun passAuthorization(basketContent: List<String>): Boolean {
     println("Для авторизации введите логин:")
     val login = readln()
     println("Введите пароль:")
     val password = readln()
     val successfulAuthorization = login == USER_LOGIN && password == USER_PASSWORD
 
+    if (successfulAuthorization) {
+        println(basketContent)
+    } else println("Неудачная авторизация")
     return successfulAuthorization
-
 }
 
 fun accessToken(successfulAuthorization: Boolean): String {
-
     val tokenLength = 32
     val letter = 'a'..'z'
     val number = '0'..'9'
@@ -31,16 +30,10 @@ fun accessToken(successfulAuthorization: Boolean): String {
         token += (letter.random())
         token += (number.random())
     }
-
-    if (successfulAuthorization) {
-        getBasket(token)
-    } else println("Неудачная авторизация")
-
     return token
 }
 
 fun getBasket(token: String): List<String> {
-
     val basketContent = listOf("Ботинки", "Носки", "Рубашка")
     return basketContent
 }
