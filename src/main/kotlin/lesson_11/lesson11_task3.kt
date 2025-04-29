@@ -2,55 +2,61 @@ package org.example.lesson_11
 
 fun main() {
 
-    val user1: Room = Room(
-        nickname = "",
-    )
+    val user1: Room = Room ()
 
     user1.addUser()
 
     user1.statusUpdate()
+
+    Participant()
+
 
 }
 
 class Room(
     val cover: String = "Картинка",
     val roomName: String = "Комната просто поболтать",
-    var nickname: String,
-    var avatar: String = "Ава",
-    var listOfParticipants: List<String> = listOf("Kate", "Volga", "Nico"),
-    var textBadge: List<String> = listOf("разговаривает", "микрофон выключен", "пользователь заглушен"),
+    val listOfParticipants: List<String> = listOf(""),
 ) {
 
-    fun addUser() {
+    fun addUser(avatar: String, nickname: String, textBadge: String) {
+
         println("Для участия в $roomName заполните след данные:")
 
-        println("Введите ваше имя:")
-        nickname = readln()
-
         println("Список участников комнаты: $listOfParticipants")
-
-        println("Добавьте аватар:")
-        avatar = readln()
-
-        println("Выберете статус:")
-        textBadge = listOf(readln())
 
         println("Получены следующие данные:")
         println(cover)
         println(roomName)
-        println(nickname)
-        println(avatar)
         println(listOfParticipants)
+        println(avatar)
+        println(nickname)
         println(textBadge)
 
     }
 
-    fun statusUpdate() {
+    fun statusUpdate(nickname: String, textBadge: String) {
         println("Для изменения статуса введите имя:")
-        nickname = readln()
+        readln()
         println("Изменить статус:")
-        textBadge = listOf(readln())
+        listOf(readln())
         println("Статус изменён")
     }
+
+}
+
+class Participant(
+    val avatar: String = "Ава",
+    var nickname: String,
+    var textBadge: List<String> = listOf("разговаривает", "микрофон выключен", "пользователь заглушен"),
+) {
+    println("Введите ваше имя:")
+    nickname = readln()
+
+    println("Добавьте аватар:")
+    avatar = readln()
+
+    println("Выберете статус:")
+    textBadge = listOf(readln())
 
 }
