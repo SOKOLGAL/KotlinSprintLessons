@@ -2,53 +2,47 @@ package org.example.lesson_10
 
 fun main() {
 
-    val successfulAuthorization = aufhorization()
-    if (successfulAuthorization) {
-        accessToken()
-        basket(null)
-    } else println("Неудачная авторизация")
+    val successfulAuthorization = passAufhorization()
+    accessToken()
+    getBasket()
 
 }
 
-fun aufhorization(): Boolean {
+fun passAufhorization(): Boolean {
+
 
     println("Для авторизации введите логин:")
     val login = readln()
-
     println("Введите пароль:")
     val password = readln()
-
     val successfulAuthorization = login == USER_LOGIN && password == USER_PASSWORD
 
     return successfulAuthorization
 
 }
 
-fun accessToken(): MutableList<Char> {
+fun accessToken(successfulAuthorization: Boolean): String {
 
     val tokenLength = 32
     val letter = 'a'..'z'
     val number = '0'..'9'
-    val token: MutableList<Char> = mutableListOf()
-
+    var token: String = ""
     for (i in 1..tokenLength / TWO_CHARACTER_IN_ONE_PASS_FOR) {
-        token.add(letter.random())
-        token.add(number.random())
+        token += (letter.random())
+        token += (number.random())
     }
 
-    token.shuffle()
+    if (successfulAuthorization) {
+        getBasket(token)
+    } else println("Неудачная авторизация")
 
     return token
 }
 
-fun basket(token: Int?): Unit {
+fun getBasket(token: String): List<String> {
 
-    val basketContent: Unit = println("Печать содержимого корзины")
-
-    if (token != null) {
-        println(basketContent)
-    }
-
+    val basketContent = listOf("Ботинки", "Носки", "Рубашка")
+    return basketContent
 }
 
 const val TWO_CHARACTER_IN_ONE_PASS_FOR = 2
