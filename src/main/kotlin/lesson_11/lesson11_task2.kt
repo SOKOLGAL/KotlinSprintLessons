@@ -9,9 +9,10 @@ fun main() {
         mail = "littleprince@mail.ru",
     )
 
-    user3.outputInUserInformation(user2 = user3)
-    user3.setBio(user2 = user3)
-    user3.changePassword(user2 = user3)
+    user3.outputInUserInformation()
+    user3.setBio()
+    user3.changePassword()
+    user3.outputInUserInformation()
 
 }
 
@@ -23,27 +24,28 @@ class User2(
     var bio: String = "",
 ) {
 
-    fun outputInUserInformation(user2: User2) {
-        println(user2.id)
-        println(user2.login)
-        println(user2.password)
-        println(user2.mail)
+    fun outputInUserInformation() {
+        println(id)
+        println(login)
+        println(password)
+        println(mail)
+        println(bio)
     }
 
-    fun setBio(user2: User2) {
+    fun setBio() {
         println("Заполните блок о себе:")
-        user2.bio = readln()
-        println(user2.bio)
+        bio = readln()
     }
 
-    fun changePassword(user2: User2) {
+    fun changePassword() {
         println("Для изменения пароля введите текущий пароль:")
-        val password = readln()
+        val passwordCurrent = readln()
 
-        if (password == user2.password) {
+        if (passwordCurrent == password) {
             println("Введите новый пароль:")
-            user2.password = readln()
+            password = readln()
             println("Пароль изменён")
         }
+//        else println("Ошибка")
     }
 }
