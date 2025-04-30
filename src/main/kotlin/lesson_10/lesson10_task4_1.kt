@@ -13,6 +13,17 @@ fun main() {
 
         when {
             (moveComp > movePlayer) -> println("Победила машина")
+            (moveComp < movePlayer) -> println("Победило человечество")
+            else -> println("Победила дружба")
+        }
+
+        if (moveComp < movePlayer) {
+            playerWins++
+        }
+
+        val result = newRound()
+
+    } while (result)
             (moveComp < movePlayer) -> {
                 println("Победило человечество")
                 playerWins++
@@ -22,12 +33,21 @@ fun main() {
         }
     } while (isContinueConfirmed())
 
-
     println("Игра завершена. Выигрышных партий $playerWins")
 
 }
 
 fun getThrowOfDice(): Int = (1..6).random()
+
+fun newRound(): Boolean {
+
+    println("Хотите бросить кости еще раз? Введите да или нет")
+
+    val continuationOfGame = readln()
+
+    val result = continuationOfGame.lowercase() == "да"
+
+    return result
 
 fun isContinueConfirmed(): Boolean {
 
