@@ -20,6 +20,7 @@ fun passAuthorization(login: String, password: String): String {
         generateToken()
     } else println("Неудачная авторизация")
     return generateToken()
+//    token
 }
 
 fun generateToken(): String {
