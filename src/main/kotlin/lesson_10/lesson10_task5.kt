@@ -9,6 +9,7 @@ fun main() {
 }
 
 fun passAuthorization(basketContent: List<String>): Boolean {
+
     println("Для авторизации введите логин:")
     val login = readln()
     println("Введите пароль:")
@@ -41,3 +42,8 @@ fun getBasket(token: String): List<String> {
 const val TWO_CHARACTER_IN_ONE_PASS_FOR = 2
 const val USER_LOGIN = "lordpash"
 const val USER_PASSWORD = "hfrtnf"
+
+}
+
+const val USER_LOGIN = login123
+const val USER_PASSWORD = password123
