@@ -2,61 +2,44 @@ package org.example.lesson_11
 
 fun main() {
 
-    val user1: Room = Room ()
+    val user1: Room = Room(
+    )
+    println("Введите ваше имя:")
+    println("Выберете статус:")
+    user1.addUser(
+        nickname = readln(),
+        textBadge = readln()
+    )
 
-    user1.addUser()
+    println("Для изменения статуса введите имя и новый статус:")
+    user1.statusUpdate(
+        nickname = readln(),
+        textBadge = readln()
+    )
 
-    user1.statusUpdate()
-
-    Participant()
-
+    println("Статус изменён")
 
 }
 
 class Room(
     val cover: String = "Картинка",
     val roomName: String = "Комната просто поболтать",
-    val listOfParticipants: List<String> = listOf(""),
+    val listOfParticipants: String = "",
 ) {
 
-    fun addUser(avatar: String, nickname: String, textBadge: String) {
-
-        println("Для участия в $roomName заполните след данные:")
-
-        println("Список участников комнаты: $listOfParticipants")
-
-        println("Получены следующие данные:")
-        println(cover)
-        println(roomName)
-        println(listOfParticipants)
-        println(avatar)
-        println(nickname)
-        println(textBadge)
-
+    fun addUser(nickname: String, textBadge: String): String {
+        return nickname; textBadge
     }
 
-    fun statusUpdate(nickname: String, textBadge: String) {
-        println("Для изменения статуса введите имя:")
-        readln()
-        println("Изменить статус:")
-        listOf(readln())
-        println("Статус изменён")
+    fun statusUpdate(nickname: String, textBadge: String): String {
+        return textBadge
     }
-
 }
 
 class Participant(
+    var id: Int,
     val avatar: String = "Ава",
     var nickname: String,
-    var textBadge: List<String> = listOf("разговаривает", "микрофон выключен", "пользователь заглушен"),
+    var textBadge: String = "микрофон выключен",
 ) {
-    println("Введите ваше имя:")
-    nickname = readln()
-
-    println("Добавьте аватар:")
-    avatar = readln()
-
-    println("Выберете статус:")
-    textBadge = listOf(readln())
-
 }
