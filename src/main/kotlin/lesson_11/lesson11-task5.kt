@@ -1,26 +1,36 @@
 package org.example.lesson_11
 
 fun main() {
-    val user1: ForumWork()
-ForumMember()
-}
-
-class ForumWork() {
+    println("Введите ваше имя:")
+    val userName = readln()
 
 }
 
-class ForumMember(
-    var userId: Int,
-    var userName: String,
+class ForumWork(
+    val forumList: List<String> = listOf(),
+    val user: User,
 ) {
-    fun setId(id: Int) = apply { this.userId =  (1..1000).random() }
-    fun setName(userName: String) = apply { this.userName = userName }
+    data class ForumMember(
+        var userId: Int,
+        var userName: String,
+    ) {
+        fun createNewUser(userName: String): Int {
+            apply { this.userId = (1..1000).random() }
+            apply { this.userName = userName }
+            return userId
+        }
+    }
 
-}
+    data class ForumMessage(
+        val authorId: Int,
+        val message: String,
+    ) {
+        fun createNewMessage(userId: Int): String {
+            return message
+        }
 
-class ForumMessage(
-    val authorId: Int,
-    val message: String,
-) {
-
+        fun printThread(userName: String, message: String) {
+            return println("$userName: $message")
+        }
+    }
 }
