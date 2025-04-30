@@ -24,6 +24,14 @@ fun main() {
         val result = newRound()
 
     } while (result)
+            (moveComp < movePlayer) -> {
+                println("Победило человечество")
+                playerWins++
+            }
+
+            else -> println("Победила дружба")
+        }
+    } while (isContinueConfirmed())
 
     println("Игра завершена. Выигрышных партий $playerWins")
 
@@ -40,4 +48,11 @@ fun newRound(): Boolean {
     val result = continuationOfGame.lowercase() == "да"
 
     return result
+
+fun isContinueConfirmed(): Boolean {
+
+    println("Хотите бросить кости еще раз? Введите да или нет")
+    val continuationOfGame = readln()
+
+    return continuationOfGame.lowercase() == "да"
 }
