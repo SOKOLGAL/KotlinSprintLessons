@@ -10,7 +10,6 @@ fun main() {
     generateToken()
     getBasket(println().toString())
 
-
 }
 
 fun passAuthorization(login: String, password: String): String? {
@@ -34,7 +33,7 @@ fun generateToken(): String {
         token += (number.random())
     }
     token.shuffle()
-       return token.toString()
+    return token.toString()
 }
 
 fun getBasket(token: String): List<String> {
