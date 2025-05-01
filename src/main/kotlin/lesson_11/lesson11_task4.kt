@@ -1,20 +1,18 @@
 package org.example.lesson_11
 
-import jdk.xml.internal.JdkCatalog.init
-
 fun main() {
 
 }
 
 class RecipeCategories(
     val id: Int,
+    val listOfRecipe: List<Recipe> = listOf(),
     val categoryName: String,
     val descriptionCategory: String,
     val recipe: Recipe,
     val photoCategory: Unit,
     val categoryInFavorites: Boolean = false,
 ) {
-
 }
 
 class Recipe(
@@ -23,10 +21,9 @@ class Recipe(
     val methodOfPreparation: List<String> = listOf("", "", ""),
     val photoRecipe: Unit,
     val ingredient: Ingredient,
-    val listOfIngredients: List<String> = listOf(),
+    val listOfIngredients: List<Ingredient> = listOf(),
     val recipeInFavorites: Boolean = false,
 ) {
-
 }
 
 class Ingredient(
@@ -38,5 +35,4 @@ class Ingredient(
     val numberOfServings: Int,
     val ingredientNameInFavorites: Boolean = false,
 ) {
-
 }
