@@ -9,12 +9,14 @@ fun main() {
     )
     println("Выберете статус:")
     user1.textBadge = readln()
+
     println("Для изменения статуса введите имя:")
     user1.nickname = readln()
+
     println("Введите новый статус:")
     user1.textBadge = readln()
     println("Статус изменён")
-    Room()
+
 }
 
 class Room(
@@ -25,13 +27,15 @@ class Room(
 
     fun addUser(Participant: String): MutableList<String> {
         mutableListOf(Participant)
-               return mutableListOf()
+        return mutableListOf()
 
     }
 
-    fun statusUpdate(id: Int, textBadge: String): String {
-        textBadge
-        println(textBadge)
+    fun statusUpdate(id: Int, nickname: String, textBadge: String): String {
+        val newStatus = listOfParticipants.filter { it == nickname }
+        newStatus.forEach {
+            textBadge
+        }
         return textBadge
     }
 }
