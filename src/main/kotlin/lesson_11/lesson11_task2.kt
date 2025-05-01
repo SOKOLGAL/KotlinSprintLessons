@@ -10,12 +10,16 @@ fun main() {
     )
 
     user3.outputInUserInformation()
-    println("Заполните блок о себе:")
     user3.bio = readln()
     println("Для изменения пароля введите текущий пароль:")
-    user3.changePassword(passwordCurrent = readln())
-    user3.password = readln()
-    println("Пароль изменён")
+    val passwordCurrent: String = readln()
+    if (passwordCurrent == user3.password) {
+        println("Введите новый пароль:")
+        user3.password = readln()
+        println("Пароль изменён")
+    }
+
+    user3.changePassword(readln())
     user3.outputInUserInformation()
 
 }
@@ -36,14 +40,11 @@ class User2(
         println(bio)
     }
 
-    fun setBio(bio: String): String {
-        return bio
-    }
+    fun setBio(bio: String) {
+        println("Заполните блок о себе:")
+           }
 
-    fun changePassword(passwordCurrent: String) {
-        if (passwordCurrent == password) {
-            println("Введите новый пароль:")
-            password
-        }
+    fun changePassword(password: String): String {
+        return password
     }
 }
