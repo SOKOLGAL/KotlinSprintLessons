@@ -1,31 +1,31 @@
 package org.example.lesson_11
 
 fun main() {
-    println("Введите ваше имя:")
-    val userName = readln()
+
+    ForumWork.Builder(
+        userName = readln(),
+        userId = (1..1000).random(),
+        message = readln()
+    )
 
 }
 
 class ForumWork(
-    val forumList: List<String> = listOf(),
-    val user: User,
+    val forumList: List<ForumMember> = listOf(),
 ) {
-    data class ForumMember(
-        var userId: Int,
+    data class Builder(
         var userName: String,
+        var userId: Int,
+        var message: String,
     ) {
         fun createNewUser(userName: String): Int {
-            apply { this.userId = (1..1000).random() }
             apply { this.userName = userName }
+            apply { this.userId = (1..1000).random() }
             return userId
         }
-    }
 
-    data class ForumMessage(
-        val authorId: Int,
-        val message: String,
-    ) {
         fun createNewMessage(userId: Int): String {
+            apply { this.message = message }
             return message
         }
 
@@ -33,4 +33,16 @@ class ForumWork(
             return println("$userName: $message")
         }
     }
+}
+
+class ForumMember(
+    var userId: Int,
+    var userName: String,
+) {
+}
+
+class ForumMessage(
+    val authorId: Boolean,
+    val message: String,
+) {
 }
