@@ -2,36 +2,36 @@ package org.example.lesson_11
 
 fun main() {
 
-    val user1: Room = Room(
-    )
     println("Введите ваше имя:")
+    val user1: Participant = Participant(
+        id = 1,
+        nickname = readln(),
+    )
     println("Выберете статус:")
-    user1.addUser(
-        nickname = readln(),
-        textBadge = readln()
-    )
-
-    println("Для изменения статуса введите имя и новый статус:")
-    user1.statusUpdate(
-        nickname = readln(),
-        textBadge = readln()
-    )
-
+    user1.textBadge = readln()
+    println("Для изменения статуса введите имя:")
+    user1.nickname = readln()
+    println("Введите новый статус:")
+    user1.textBadge = readln()
     println("Статус изменён")
-
+    Room()
 }
 
 class Room(
     val cover: String = "Картинка",
     val roomName: String = "Комната просто поболтать",
-    val listOfParticipants: String = "",
+    val listOfParticipants: MutableList<String> = mutableListOf(),
 ) {
 
-    fun addUser(nickname: String, textBadge: String): String {
-        return nickname; textBadge
+    fun addUser(Participant: String): MutableList<String> {
+        mutableListOf(Participant)
+               return mutableListOf()
+
     }
 
-    fun statusUpdate(nickname: String, textBadge: String): String {
+    fun statusUpdate(id: Int, textBadge: String): String {
+        textBadge
+        println(textBadge)
         return textBadge
     }
 }
