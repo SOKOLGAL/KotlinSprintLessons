@@ -10,15 +10,12 @@ fun main() {
     )
 
     user3.outputInUserInformation()
-
     println("Заполните блок о себе:")
     user3.bio = readln()
-
     println("Для изменения пароля введите текущий пароль:")
     user3.changePassword(passwordCurrent = readln())
     user3.password = readln()
     println("Пароль изменён")
-
     user3.outputInUserInformation()
 
 }
@@ -43,10 +40,10 @@ class User2(
         return bio
     }
 
-    fun changePassword(passwordCurrent: String): String {
+    fun changePassword(passwordCurrent: String) {
         if (passwordCurrent == password) {
             println("Введите новый пароль:")
+            password
         }
-        return password
     }
 }
