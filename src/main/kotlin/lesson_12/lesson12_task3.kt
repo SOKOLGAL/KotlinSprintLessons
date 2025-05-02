@@ -13,8 +13,8 @@ fun main() {
 
 class SaveWeather(
 ) {
-    var daytimeTemperature: Int = 15
-    var nightTemperature: Int = 2
+    var daytimeTemperature: Int = 290
+    var nightTemperature: Int = 280
     var precipitationDuringDay: Boolean = false
 
     fun weatherTodayTomorrow() {
