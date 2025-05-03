@@ -8,20 +8,11 @@ fun main() {
         password = "Ro_Sa_Exup",
         mail = "littleprince@mail.ru",
     )
-
     user3.outputInUserInformation()
-    user3.bio = readln()
-    println("Для изменения пароля введите текущий пароль:")
-    val passwordCurrent: String = readln()
-    if (passwordCurrent == user3.password) {
-        println("Введите новый пароль:")
-        user3.password = readln()
-        println("Пароль изменён")
-    }
-
-    user3.changePassword(readln())
+    println("Заполните блок о себе:")
+    user3.setBio(newBio = readln())
+    user3.changePassword()
     user3.outputInUserInformation()
-
 }
 
 class User2(
@@ -29,9 +20,8 @@ class User2(
     val login: String,
     var password: String,
     val mail: String,
-    var bio: String = "",
+    private var bio: String = "",
 ) {
-
     fun outputInUserInformation() {
         println(id)
         println(login)
@@ -40,11 +30,19 @@ class User2(
         println(bio)
     }
 
-    fun setBio(bio: String) {
-        println("Заполните блок о себе:")
-           }
+    fun setBio(newBio: String) {
+        bio = newBio
+        println("Данные обновлены")
+    }
 
-    fun changePassword(password: String): String {
-        return password
+    fun changePassword() {
+        println("Введите старый пароль")
+        val checkPassword = readln()
+        if (checkPassword == password) {
+            println("Введите новый пароль")
+        }
+        val passwordNew = readln()
+        password = passwordNew
+        println("Пароль изменен, новый пароль $passwordNew!")
     }
 }
