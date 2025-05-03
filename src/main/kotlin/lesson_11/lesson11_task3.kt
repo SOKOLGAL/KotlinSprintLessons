@@ -7,6 +7,7 @@ fun main() {
         id = 1,
         nickname = readln(),
     )
+
     println("Выберете статус:")
     user1.textBadge = readln()
 
@@ -14,29 +15,41 @@ fun main() {
     user1.nickname = readln()
 
     println("Введите новый статус:")
-    user1.textBadge = readln()
-    println("Статус изменён")
+    var newStatus = readln()
+
 
 }
 
 class Room(
     val cover: String = "Картинка",
     val roomName: String = "Комната просто поболтать",
-    val listOfParticipants: MutableList<String> = mutableListOf(),
+    val listOfParticipants: MutableList<Participant> = mutableListOf(),
 ) {
 
-    fun addUser(Participant: String): MutableList<String> {
-        mutableListOf(Participant)
-        return mutableListOf()
+    fun addUser(Participant: String): MutableList<Participant> {
+
+        listOfParticipants.add(Participant)
+        return listOfParticipants
 
     }
 
-    fun statusUpdate(id: Int, nickname: String, textBadge: String): String {
-        val newStatus = listOfParticipants.filter { it == nickname }
-        newStatus.forEach {
-            textBadge
+    fun statusUpdate(textBadge: String, newStatus: String) {
+
+        println("Для изменения статуса введите имя:")
+        val nickname = readln()
+        val nicknameFind = listOfParticipants.map {
+            it.nickname
         }
-        return textBadge
+        val idFind = listOfParticipants.find { nicknameFind }
+
+        val n = listOfParticipants.contains(nickname)
+
+        if (n == true) {
+            println("Введите новый статус:")
+            var newStatus = readln()
+        }
+               textBadge = newStatus
+        println("Статус изменён на $newStatus")
     }
 }
 
