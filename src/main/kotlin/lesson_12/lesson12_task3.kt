@@ -2,26 +2,26 @@ package org.example.lesson_12
 
 fun main() {
 
-    val weather1 = SaveWeather()
-    weather1.daytimeTemperature = 300
-    weather1.nightTemperature = 275
-    weather1.precipitationDuringDay = false
-
+    val weather1 = SaveWeather(300, 275, true)
     weather1.weatherTodayTomorrow()
 
 }
 
 class SaveWeather(
+    kelvinDayTemperature: Int,
+    kelvinNightTemperature: Int,
+    precipitationDuringDay: Boolean = false,
 ) {
-    var daytimeTemperature: Int = 290
-    var nightTemperature: Int = 280
-    var precipitationDuringDay: Boolean = false
+    val daytimeTemperature: Int = kelvinDayTemperature - CONVERSION_TO_CELSIUS
+    val nightTemperature: Int = kelvinNightTemperature - CONVERSION_TO_CELSIUS
+    val precipitationDuringDay: Boolean = precipitationDuringDay
 
     fun weatherTodayTomorrow() {
         println(
-            "Дневная температура ${daytimeTemperature - CONVERSION_TO_CELSIUS}, " +
-                    "ночная температура ${nightTemperature - CONVERSION_TO_CELSIUS}, " +
-                    "осадки $precipitationDuringDay")
+            "Дневная температура $daytimeTemperature, " +
+                    "ночная температура $nightTemperature, " +
+                    "осадки $precipitationDuringDay"
+        )
     }
 }
 
