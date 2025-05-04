@@ -17,6 +17,6 @@ class NewContactAdd(
     val replacement: String = company ?: "<не указано>"
 
     fun contactCard() {
-        println("- Имя: $name\n- Номер: $phoneNumber\n- Компания: $replacement")
+        println("- Имя: $name\n- Номер: $phoneNumber\n- Компания: $company")
     }
 }
