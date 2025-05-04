@@ -10,7 +10,7 @@ fun main() {
 class SaveWeather(
     kelvinDayTemperature: Int,
     kelvinNightTemperature: Int,
-    precipitationDuringDay: Boolean = false,
+    precipitationDuringDay: Boolean,
 ) {
     val daytimeTemperature: Int = kelvinDayTemperature - CONVERSION_TO_CELSIUS
     val nightTemperature: Int = kelvinNightTemperature - CONVERSION_TO_CELSIUS
