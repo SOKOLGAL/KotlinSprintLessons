@@ -1,7 +1,7 @@
 package org.example.lesson_13
 
 fun main() {
-    val newContact1 = TelephoneDirectoryData(
+    val newContact1 = NewContact(
         name = readln(),
         phoneNumber = readln().toLong(),
         company = readln()
@@ -9,7 +9,7 @@ fun main() {
     newContact1.contactCard()
 }
 
-class TelephoneDirectoryData(
+class NewContact(
     val name: String?,
     val phoneNumber: Long?,
     val company: String?,
@@ -20,3 +20,19 @@ class TelephoneDirectoryData(
         println(company)
     }
 }
+
+//class TelephoneDirectoryData(
+//    val listOfNewContact: MutableList<NewContact> = mutableListOf(),
+//) {
+//
+//    fun addNewContact(
+//    ) {
+//        listOfNewContact.add(
+//            NewContact(
+//                name = TODO(),
+//                phoneNumber = TODO(),
+//                company = TODO()
+//            )
+//        )
+//    }
+//}
