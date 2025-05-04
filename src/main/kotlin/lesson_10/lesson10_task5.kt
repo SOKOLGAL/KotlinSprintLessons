@@ -6,13 +6,13 @@ fun main() {
     val login = readln()
     println("Введите пароль:")
     val password = readln()
-
     val token = passAuthorization(login, password)
-
     if (token == null) {
         println("Неудачная авторизация")
-    } else getBasket(println().toString())
-
+    } else {
+        val basket = getBasket(token)
+        println("В вашей корзине: $basket")
+    }
 }
 
 fun passAuthorization(login: String, password: String): String? =
@@ -32,7 +32,6 @@ fun generateToken(): String {
 }
 
 fun getBasket(token: String): List<String> {
-    println(listOf("Ботинки", "Носки", "Рубашка"))
     return listOf("Ботинки", "Носки", "Рубашка")
 }
 
