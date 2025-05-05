@@ -12,6 +12,7 @@ fun main() {
         println("Номер телефона не введён")
         contactList  // запись не добавляется
     }
+
     newContact1.contactCard()
 }
 
