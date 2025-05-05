@@ -14,7 +14,8 @@ fun main() {
     user1.nickname = readln()
 
     println("Введите новый статус:")
-    val newStatus = readln()
+    user1.statusUpdate(readln())
+
 }
 
 class Room(
@@ -22,12 +23,16 @@ class Room(
     val roomName: String = "Комната просто поболтать",
     val listOfParticipants: MutableList<Participant> = mutableListOf(),
 ) {
-    fun addUser(Participant: String): MutableList<Participant> {
-        listOfParticipants.add(Participant())
-        return listOfParticipants
+    fun addUser(Participant: String) {
+        listOfParticipants
+
     }
-    fun statusUpdate(newStatus: String) {
-        val textBadge = newStatus
+    fun statusUpdate(id: Int, newStatus: String) {
+
+        val findId = listOfParticipants.find {id -> id.equals(id) }
+        if (findId != null) {
+            findId.textBadge = newStatus
+        }
         println("Статус изменён на $newStatus")
     }
 }
