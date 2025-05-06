@@ -4,11 +4,14 @@ fun main() {
 
     val user1: ForumWork = ForumWork()
     val user2: ForumWork = ForumWork()
-    user1.createNewUser(readln())
-   val user1Message = readln()
-    user2.createNewUser(readln())
-    val user2Message = readln()
-
+    user1.createNewUser(user1.forumList.toString())
+    user1.createNewMessage()
+    user2.createNewUser(user2.forumList.toString())
+    user2.createNewMessage()
+    user1.createNewMessage()
+    user2.createNewMessage()
+    user1.printThread()
+    user2.printThread()
 }
 
 class ForumWork() {
@@ -17,34 +20,37 @@ class ForumWork() {
 
     fun createNewUser(userName: String) {
         println("Для регистрации на ФОРУМе введите ваше имя:")
-        forumList.add(ForumMember(userId = (1..1000).random(), userName = readln()))
-          }
-
-    fun createNewMessage(userId: Int) {
-        val findUser= forumList.map {
-        it.userId
+        forumList.add(ForumMember())
     }
-        if (userId in findUser) {
+
+    fun createNewMessage() {
+        val findUser = forumList.find {
+            it.userId
+        }
+        if (findUser == userId) {
             println("Введите ваше сообщение:")
-            val message: ForumMessage = readln()
+            val message = readln()
             forumMessage.add(message)
         } else println("Пользователь не найден")
     }
 
-    fun printThread(userName: String, message: ForumMessage) {
-        val findUser= forumList.map {
+    fun printThread() {
+        val findUser = forumList.map {
             it.userName
         }
-        val findMessage= forumMessage.map {
+        val findMessage = forumMessage.map {
             it.message
         }
         println("$findUser: $findMessage")
+
+        findUser.forEach { println("$findUser: $findMessage")}
     }
+//    userName: String, message: ForumMessage
 }
 
 class ForumMember(
-    var userId: Int,
-    var userName: String,
+    var userId: Int = (1..1000).random(),
+    var userName: String = readln(),
 ) {
 }
 
