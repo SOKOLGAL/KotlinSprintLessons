@@ -4,7 +4,7 @@ fun main() {
     val newContact1 = NewContactAdd(
         name = readln(),
         phoneNumber = readln().toLong(),
-        company = readln()
+//        company = readln()
     )
     newContact1.contactCard()
 }
