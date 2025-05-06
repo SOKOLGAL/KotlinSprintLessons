@@ -15,7 +15,7 @@ fun main() {
     val newContact3 = NewContactCreate(
         name = "Петр",
         phoneNumber = "88004681357".toLong(),
-        company = ""
+        company = null
     )
     val newContact4 = NewContactCreate(
         name = "Дмитрий",
@@ -25,19 +25,18 @@ fun main() {
     val newContact5 = NewContactCreate(
         name = "Екатерина",
         phoneNumber = "88007770077".toLong(),
-        company = ""
+        company = null
     )
     val contactList = listOf(newContact1, newContact2, newContact3, newContact4, newContact5)
-//    company ?: "<не указано>
-    val  listOfAllCompanies = contactList.map {
+    val  listOfAllCompanies = contactList.mapNotNull {
         it.company
     }
     println(listOfAllCompanies.toString())
 }
 
 class NewContactCreate(
-    val name: String?,
-    val phoneNumber: Long?,
+    val name: String,
+    val phoneNumber: Long,
     val company: String?,
 ) {
 }
