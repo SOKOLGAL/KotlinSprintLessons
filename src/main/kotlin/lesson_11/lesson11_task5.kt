@@ -4,6 +4,7 @@ fun main() {
 
     val user1: ForumWork = ForumWork()
     val user2: ForumWork = ForumWork()
+    println("Для регистрации на ФОРУМе введите ваше имя:")
     user1.createNewUser(user1.forumList.toString())
     user1.createNewMessage()
     user2.createNewUser(user2.forumList.toString())
@@ -14,12 +15,16 @@ fun main() {
     user2.printThread()
 }
 
-class ForumWork() {
+class ForumWork(
+    ) {
+    val id: Int = 0
+
     val forumList: MutableList<ForumMember> = mutableListOf()
     val forumMessage: MutableList<ForumMessage> = mutableListOf()
 
-    fun createNewUser(userName: String) {
-        println("Для регистрации на ФОРУМе введите ваше имя:")
+    fun createNewUser(name: String) {
+        name = userName
+        id += 1
         forumList.add(ForumMember())
     }
 
@@ -45,13 +50,14 @@ class ForumWork() {
 
         findUser.forEach { println("$findUser: $findMessage")}
     }
-//    userName: String, message: ForumMessage
+
 }
 
 class ForumMember(
-    var userId: Int = (1..1000).random(),
+    var userId: Int,
     var userName: String = readln(),
 ) {
+    userId += 1
 }
 
 class ForumMessage(
