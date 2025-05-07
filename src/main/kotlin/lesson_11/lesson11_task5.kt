@@ -5,59 +5,56 @@ fun main() {
     val user1: ForumWork = ForumWork()
     val user2: ForumWork = ForumWork()
     println("Для регистрации на ФОРУМе введите ваше имя:")
-    user1.createNewUser(user1.forumList.toString())
-    user1.createNewMessage()
-    user2.createNewUser(user2.forumList.toString())
-    user2.createNewMessage()
-    user1.createNewMessage()
-    user2.createNewMessage()
+    user1.createNewUser(readln())
+    println("Введите ваше сообщение:")
+    user1.createNewMessage(readln())
+    println("Для регистрации на ФОРУМе введите ваше имя:")
+    user2.createNewUser(readln())
+    println("Введите ваше сообщение:")
+    user2.createNewMessage(readln())
+    println("Введите ваше сообщение:")
+    user1.createNewMessage(readln())
+    println("Введите ваше сообщение:")
+    user2.createNewMessage(readln())
     user1.printThread()
     user2.printThread()
 }
 
 class ForumWork(
-    ) {
-    val id: Int = 0
-
+) {
+    var userId = 0
     val forumList: MutableList<ForumMember> = mutableListOf()
     val forumMessage: MutableList<ForumMessage> = mutableListOf()
 
-    fun createNewUser(name: String) {
-        name = userName
-        id += 1
-        forumList.add(ForumMember())
+    fun createNewUser(userName: String): ForumMember {
+        forumList.plus(userName)
+        userId++
+        forumList.plus(userId)
+        return ForumMember(userId, userName)
     }
-
-    fun createNewMessage() {
-        val findUser = forumList.find {
-            it.userId
-        }
-        if (findUser == userId) {
-            println("Введите ваше сообщение:")
-            val message = readln()
-            forumMessage.add(message)
-        } else println("Пользователь не найден")
+    fun createNewMessage(message: String): ForumMessage {
+        if (forumList.contains(userId))  else println("Пользователь не найден")
+        val authorId = userId
+        forumMessage.plus(authorId)
+        forumMessage.plus(message)
+        return ForumMessage(authorId, message)
     }
-
     fun printThread() {
-        val findUser = forumList.map {
+
+        val listOfUser = forumList.map {
             it.userName
         }
-        val findMessage = forumMessage.map {
+        val listOfMessage = forumMessage.map {
             it.message
         }
-        println("$findUser: $findMessage")
-
-        findUser.forEach { println("$findUser: $findMessage")}
+        println("$listOfUser: $listOfMessage")
     }
-
 }
 
 class ForumMember(
-    var userId: Int,
-    var userName: String = readln(),
+    val userId: Int,
+    val userName: String = readln(),
 ) {
-    userId += 1
 }
 
 class ForumMessage(
