@@ -24,12 +24,12 @@ class Room(
     val listOfParticipants: MutableList<Participant> = mutableListOf(),
 ) {
     fun addUser(Participant: String) {
-        listOfParticipants
-
+        listOfParticipants.plus(Participant)
     }
+
     fun statusUpdate(id: Int, newStatus: String) {
 
-        val findId = listOfParticipants.find {id -> id.equals(id) }
+        val findId = listOfParticipants.find { id -> id.equals(id) }
         if (findId != null) {
             findId.textBadge = newStatus
         }
