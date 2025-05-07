@@ -3,16 +3,25 @@ package org.example.lesson_14
 import kotlin.math.pow
 
 fun main() {
-    val circle1 = Circle("white", 15)
-    val circle2 = Circle("black", 10)
-    val circle3 = Circle("black", 5)
-    val rectangle1 = Rectangle("black", 3, 7)
-    val rectangle2 = Rectangle("white", 5, 9)
-    val rectangle3 = Rectangle("black", 4, 8)
+    val circle1 = Circle(COLOR_W, 15)
+    val circle2 = Circle(COLOR_B, 10)
+    val circle3 = Circle(COLOR_B, 5)
+    val rectangle1 = Rectangle(COLOR_B, 3, 7)
+    val rectangle2 = Rectangle(COLOR_W, 5, 9)
+    val rectangle3 = Rectangle(COLOR_B, 4, 8)
     val generalList = mutableListOf(circle1, circle2, circle3, rectangle1, rectangle2, rectangle3)
 
-    println("Сумма периметров всех черных фигур: $")
-    println("Сумма площадей всех белых фигур: $")
+    val perimeter = generalList.filter {
+        it == COLOR_B
+    }
+    val area = generalList.filter {
+        it == COLOR_W
+    }
+    val sumPerimeter = perimeter.sum()
+    val sumArea = area.sum
+
+    println("Сумма периметров всех черных фигур: $sumPerimeter")
+    println("Сумма площадей всех белых фигур: $sumArea")
 
 }
 
@@ -47,3 +56,5 @@ class Rectangle(
 const val NUMBER_PI = 3.14
 const val SQUARING = 2
 const val CONSTANT_FOR_CALCULATING_PERIMETER = 2
+const val COLOR_B = "black"
+const val COLOR_W = "white"
