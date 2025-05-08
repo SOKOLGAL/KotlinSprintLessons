@@ -2,22 +2,57 @@ package org.example.lesson_11
 
 fun main() {
 
-    val user1: ForumWork = ForumWork()
-    val user2: ForumWork = ForumWork()
     println("Для регистрации на ФОРУМе введите ваше имя:")
-    user1.createNewUser(readln())
+    val user1: ForumMember = ForumMember(
+        userId = 1,
+        userName = readln()
+    )
+    val list: ForumWork = ForumWork()
+    list.createNewUser(
+        ForumMember(
+            userId = user1.userId,
+            userName = user1.userName
+        )
+    )
     println("Введите ваше сообщение:")
-    user1.createNewMessage(readln())
+    var messageUser1: ForumMessage = ForumMessage(
+        authorId = user1.userId,
+        message = readln()
+    )
+    list.createNewMessage(
+        message = messageUser1
+    )
     println("Для регистрации на ФОРУМе введите ваше имя:")
-    user2.createNewUser(readln())
+    val user2: ForumMember = ForumMember(
+        userId = 2,
+        userName = readln()
+    )
     println("Введите ваше сообщение:")
-    user2.createNewMessage(readln())
+    var messageUser2: ForumMessage = ForumMessage(
+        authorId = user2.userId,
+        message = readln()
+    )
+    list.createNewMessage(
+        message = messageUser2
+    )
     println("Введите ваше сообщение:")
-    user1.createNewMessage(readln())
+    messageUser1 = ForumMessage(
+        authorId = user2.userId,
+        message = readln()
+    )
+    list.createNewMessage(
+        message = messageUser1
+    )
     println("Введите ваше сообщение:")
-    user2.createNewMessage(readln())
-    user1.printThread()
-    user2.printThread()
+    messageUser2 = ForumMessage(
+        authorId = user2.userId,
+        message = readln()
+    )
+    list.createNewMessage(
+        message = messageUser2
+    )
+
+    list.printThread()
 }
 
 class ForumWork(
@@ -26,28 +61,28 @@ class ForumWork(
     val forumList: MutableList<ForumMember> = mutableListOf()
     val forumMessage: MutableList<ForumMessage> = mutableListOf()
 
-    fun createNewUser(userName: String): ForumMember {
-        forumList.plus(userName)
+    fun createNewUser(userName: ForumMember): ForumMember {
+        forumList.add(userName)
         userId++
-        forumList.plus(userId)
-        return ForumMember(userId, userName)
+        forumList.add(userId)
+        return ForumMember(userId, userName.toString())
     }
-    fun createNewMessage(message: String): ForumMessage {
-        if (forumList.contains(userId))  else println("Пользователь не найден")
-        val authorId = userId
-        forumMessage.plus(authorId)
-        forumMessage.plus(message)
-        return ForumMessage(authorId, message)
-    }
-    fun printThread() {
 
+    fun createNewMessage(message: ForumMessage): ForumMessage {
+        if (forumList.contains(userId)) else println("Пользователь не найден")
+        val authorId = userId
+        forumMessage.add(message)
+        return ForumMessage(authorId, message.toString())
+    }
+
+    fun printThread() {
         val listOfUser = forumList.map {
             it.userName
         }
         val listOfMessage = forumMessage.map {
             it.message
         }
-        println("$listOfUser: $listOfMessage")
+        println("${listOfUser.joinToString()}: ${listOfMessage.joinToString()}")
     }
 }
 
