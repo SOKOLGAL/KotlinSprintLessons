@@ -11,64 +11,58 @@ fun main() {
     val rectangle2 = Rectangle(COLOR_W, 5, 9)
     val rectangle3 = Rectangle(COLOR_B, 4, 8)
     val generalList = mutableListOf(circle1, circle2, circle3, rectangle1, rectangle2, rectangle3)
-
-    val color = Figure()
-    val whatColor = color.color
+    val color = Figure().color
     val perimeter = generalList.filter {
-        whatColor == COLOR_B
+        color == COLOR_B
     }
     val area = generalList.filter {
-        whatColor == COLOR_W
+        color == COLOR_W
     }
-    val sumOfPerimeters = perimeter.map { it.color } . sumOf { color -> Int }
-    val sumOfArea = area.map { it.color }
+    perimeter.size
+    area.size
+    println(perimeter.size)
+    println(area.size)
+    val sumOfPerimeters = perimeter.sumOf { it.perimeter() }
+    val sumOfArea = area.sumOf { it.area() }
 
-    println("${perimeter.joinToString()}")
-        println("${area.joinToString()}")
-        println("${sumOfPerimeters.joinToString()}")
-        println("${sumOfArea.joinToString()}")
-//    val numPer = Figure.perimeter
-//        .sumBy { it.color}
-//    val num = numPer.sumBy { it.color}
-//    val sumPerimeter = perimeter.perimeter(sum)
-//    val sumArea = area.sum
+    println("Сумма периметров всех черных фигур: ${sumOfPerimeters.joinToString()}")
+    println("Сумма площадей всех белых фигур: ${sumOfArea.joinToString()}")
 
-//    println("Сумма периметров всех черных фигур: $sumPerimeter")
-//    println("Сумма площадей всех белых фигур: $sumArea")
+}
 
-    }
+abstract class Figure() {
+    val color = ""
+    fun area() {}
+    fun perimeter() {}
+}
 
-            open class Figure() {
-        val color: Any = ""
-        open fun area() {}
-        open fun perimeter() {}
-    }
-
-        class Circle (
-            color: String,
+class Circle(
+    color: String,
     val radius: Int,
-    ) : Figure() {
-        override fun area() {
-            val square = NUMBER_PI * radius.toDouble().pow(SQUARING.toDouble())
-            println(square)
-//        return square
-        }
-    }
+) : Figure() {
 
-    class Rectangle(
-        color: String,
-        val width: Int,
-        val height: Int,
-    ) : Figure() {
-        override fun perimeter() {
-            val perimeter = (width + height) * CONSTANT_FOR_CALCULATING_PERIMETER
-            println(perimeter)
-//        return perimeter
-        }
+    fun area(circle: Circle): Circle {
+        val square = NUMBER_PI * radius.toDouble().pow(SQUARING.toDouble())
+        println(square)
+        return circle
     }
+}
 
-    const val NUMBER_PI = 3.14
-    const val SQUARING = 2
-    const val CONSTANT_FOR_CALCULATING_PERIMETER = 2
-    const val COLOR_B = "black"
-    const val COLOR_W = "white"
+class Rectangle(
+    color: String,
+    val width: Int,
+    val height: Int,
+) : Figure() {
+
+    fun perimeter(rectangle: Rectangle): Rectangle {
+        val perimeter = (width + height) * CONSTANT_FOR_CALCULATING_PERIMETER
+        println(perimeter)
+        return rectangle
+    }
+}
+
+const val NUMBER_PI = 3.14
+const val SQUARING = 2
+const val CONSTANT_FOR_CALCULATING_PERIMETER = 2
+const val COLOR_B = "black"
+const val COLOR_W = "white"
