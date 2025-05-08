@@ -10,6 +10,7 @@ fun main() {
     val rectangle1 = Rectangle(COLOR_B, 3, 7)
     val rectangle2 = Rectangle(COLOR_W, 5, 9)
     val rectangle3 = Rectangle(COLOR_B, 4, 8)
+
     val generalList = mutableListOf(circle1, circle2, circle3, rectangle1, rectangle2, rectangle3)
     val color = Figure().color
     val perimeter = generalList.filter {
@@ -18,10 +19,6 @@ fun main() {
     val area = generalList.filter {
         color == COLOR_W
     }
-    perimeter.size
-    area.size
-    println(perimeter.size)
-    println(area.size)
     val sumOfPerimeters = perimeter.sumOf { it.perimeter() }
     val sumOfArea = area.sumOf { it.area() }
 
