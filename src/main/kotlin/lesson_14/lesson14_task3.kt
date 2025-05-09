@@ -13,24 +13,25 @@ fun main() {
 
     val generalList = mutableListOf(circle1, circle2, circle3, rectangle1, rectangle2, rectangle3)
     val color = ""
-    val perimeter = generalList.filter {
-        color == COLOR_B
-    }
-    val area = generalList.filter {
-        color == COLOR_W
-    }
-    val sumOfPerimeters = perimeter.sumOf { it.perimeter() }
-    val sumOfArea = area.sumOf { it. }
 
-    println("Сумма периметров всех черных фигур: ${sumOfPerimeters.joinToString()}")
-    println("Сумма площадей всех белых фигур: ${sumOfArea.joinToString()}")
+    for (i in generalList) {
+        when (color) {
+            COLOR_B -> println(i.perimeter())
+            COLOR_W -> println(i.area())
+        }
+    }
+
+    val sumOfPerimeter = circle2.perimeter() + circle3.perimeter() + rectangle1.perimeter() + rectangle3.perimeter()
+    val sumOfArea = circle1.area() + rectangle2.area()
+    println("Сумма периметров всех черных фигур: $sumOfPerimeter")
+    println("Сумма площадей всех белых фигур: $sumOfArea")
 
 }
 
 abstract class Figure() {
     val color = ""
-    fun area() {}
-    fun perimeter() {}
+    abstract fun area(): Double
+    abstract fun perimeter(): Double
 }
 
 class Circle(
@@ -38,10 +39,16 @@ class Circle(
     val radius: Double,
 ) : Figure() {
 
-    fun area(): Double {
+    override fun area(): Double {
         val square = NUMBER_PI * radius.pow(SQUARING.toDouble())
         println(square)
         return square
+    }
+
+    override fun perimeter(): Double {
+        val perimeter = SQUARING * NUMBER_PI * radius
+        println(perimeter)
+        return perimeter
     }
 }
 
@@ -51,10 +58,16 @@ class Rectangle(
     val height: Double,
 ) : Figure() {
 
-    fun perimeter(): Double {
+    override fun perimeter(): Double {
         val perimeter = (width + height) * CONSTANT_FOR_CALCULATING_PERIMETER
         println(perimeter)
         return perimeter
+    }
+
+    override fun area(): Double {
+        val square = width * height
+        println(square)
+        return square
     }
 }
 
