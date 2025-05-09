@@ -19,8 +19,8 @@ fun main() {
     val area = generalList.filter {
         color == COLOR_W
     }
-    val sumOfPerimeters = perimeter.sum()
-    val sumOfArea = area.sum()
+    val sumOfPerimeters = perimeter.sumOf { it.perimeter() }
+    val sumOfArea = area.sumOf { it. }
 
     println("Сумма периметров всех черных фигур: ${sumOfPerimeters.joinToString()}")
     println("Сумма площадей всех белых фигур: ${sumOfArea.joinToString()}")
@@ -38,8 +38,8 @@ class Circle(
     val radius: Double,
 ) : Figure() {
 
-    fun area(): Int {
-        val square = NUMBER_PI * radius.toDouble().pow(SQUARING.toDouble())
+    fun area(): Double {
+        val square = NUMBER_PI * radius.pow(SQUARING.toDouble())
         println(square)
         return square
     }
