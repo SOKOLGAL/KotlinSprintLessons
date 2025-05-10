@@ -13,16 +13,16 @@ fun main() {
 
     val generalList = mutableListOf(circle1, circle2, circle3, rectangle1, rectangle2, rectangle3)
     val color = ""
+    var sumOfPerimeter = 0.0
+    var sumOfArea = 0.0
 
     for (i in generalList) {
         when (color) {
-            COLOR_B -> println(i.perimeter())
-            COLOR_W -> println(i.area())
+            COLOR_B -> sumOfPerimeter += i.perimeter()
+            COLOR_W -> sumOfArea += i.area()
         }
     }
 
-    val sumOfPerimeter = circle2.perimeter() + circle3.perimeter() + rectangle1.perimeter() + rectangle3.perimeter()
-    val sumOfArea = circle1.area() + rectangle2.area()
     println("Сумма периметров всех черных фигур: $sumOfPerimeter")
     println("Сумма площадей всех белых фигур: $sumOfArea")
 
