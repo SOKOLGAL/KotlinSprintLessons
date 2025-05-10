@@ -12,7 +12,7 @@ fun main() {
     val rectangle3 = Rectangle(COLOR_B, 4.0, 8.0)
 
     val generalList = mutableListOf(circle1, circle2, circle3, rectangle1, rectangle2, rectangle3)
-    val color: String = ""
+    val color
     var sumOfPerimeter = 0.0
     var sumOfArea = 0.0
 
@@ -28,13 +28,13 @@ fun main() {
 }
 
 abstract class Figure() {
-    val color: String = ""
+    abstract val color: String
     abstract fun area(): Double
     abstract fun perimeter(): Double
 }
 
 class Circle(
-    color: String,
+    override val color: String,
     val radius: Double,
 ) : Figure() {
 
@@ -52,7 +52,7 @@ class Circle(
 }
 
 class Rectangle(
-    color: String,
+    override val color: String,
     val width: Double,
     val height: Double,
 ) : Figure() {
