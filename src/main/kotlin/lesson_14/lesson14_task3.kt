@@ -12,7 +12,7 @@ fun main() {
     val rectangle3 = Rectangle(COLOR_B, 4.0, 8.0)
 
     val generalList = mutableListOf(circle1, circle2, circle3, rectangle1, rectangle2, rectangle3)
-    val color = ""
+    val color: String = ""
     var sumOfPerimeter = 0.0
     var sumOfArea = 0.0
 
@@ -22,14 +22,13 @@ fun main() {
             COLOR_W -> sumOfArea += i.area()
         }
     }
-
     println("Сумма периметров всех черных фигур: $sumOfPerimeter")
     println("Сумма площадей всех белых фигур: $sumOfArea")
 
 }
 
 abstract class Figure() {
-    val color = ""
+    val color: String = ""
     abstract fun area(): Double
     abstract fun perimeter(): Double
 }
