@@ -12,12 +12,11 @@ fun main() {
     val rectangle3 = Rectangle(COLOR_B, 4.0, 8.0)
 
     val generalList = mutableListOf(circle1, circle2, circle3, rectangle1, rectangle2, rectangle3)
-    val color
     var sumOfPerimeter = 0.0
     var sumOfArea = 0.0
 
     for (i in generalList) {
-        when (color) {
+        when (i.color) {
             COLOR_B -> sumOfPerimeter += i.perimeter()
             COLOR_W -> sumOfArea += i.area()
         }
@@ -31,6 +30,7 @@ abstract class Figure() {
     abstract val color: String
     abstract fun area(): Double
     abstract fun perimeter(): Double
+
 }
 
 class Circle(
@@ -40,13 +40,11 @@ class Circle(
 
     override fun area(): Double {
         val square = NUMBER_PI * radius.pow(SQUARING.toDouble())
-        println(square)
         return square
     }
 
     override fun perimeter(): Double {
         val perimeter = SQUARING * NUMBER_PI * radius
-        println(perimeter)
         return perimeter
     }
 }
@@ -59,13 +57,11 @@ class Rectangle(
 
     override fun perimeter(): Double {
         val perimeter = (width + height) * CONSTANT_FOR_CALCULATING_PERIMETER
-        println(perimeter)
         return perimeter
     }
 
     override fun area(): Double {
         val square = width * height
-        println(square)
         return square
     }
 }
