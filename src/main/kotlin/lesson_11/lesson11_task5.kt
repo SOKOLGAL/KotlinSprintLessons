@@ -5,10 +5,15 @@ fun main() {
     val forumWork: ForumWork = ForumWork()
     println("Для регистрации на ФОРУМе введите ваше имя:")
     val user1: ForumMember = ForumMember(
-        userName = forumWork.createNewUser(readln()).toString()
+        1,
+        userName = readln()
+    )
+    forumWork.createNewUser(
+        userName = user1.userName
     )
     println("Введите ваше сообщение:")
     val userMessage1: ForumMessage = ForumMessage(
+        authorId = user1.userId,
         message = readln()
     )
     forumWork.createNewMessage(
@@ -19,12 +24,17 @@ fun main() {
     forumWork.createNewMessage(
         userId = user1.userId
     )
+    println(user1.userId)
+
+
     println("Для регистрации на ФОРУМе введите ваше имя:")
     val user2: ForumMember = ForumMember(
+        2,
         userName = forumWork.createNewUser(readln()).toString()
     )
     println("Введите ваше сообщение:")
     val userMessage2: ForumMessage = ForumMessage(
+        user2.userId,
         message = readln()
     )
     forumWork.createNewMessage(
@@ -35,6 +45,7 @@ fun main() {
     forumWork.createNewMessage(
         userId = user2.userId
     )
+    println(user2.userId)
 
     forumWork.printThread()
 }
@@ -97,13 +108,13 @@ class ForumWork(
 }
 
 class ForumMember(
-    var userId: Int = 0,
+    var userId: Int,
     val userName: String,
 ) {
 }
 
 class ForumMessage(
-    var authorId: Int = 0,
+    var authorId: Int,
     var message: String,
 ) {
     val id by lazy { authorId++ }
