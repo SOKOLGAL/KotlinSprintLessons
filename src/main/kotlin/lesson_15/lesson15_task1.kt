@@ -6,7 +6,6 @@ fun main() {
     val gull = Gull("Чайка")
     val duck = Duck("Утка")
     crucian.floating()
-    crucian.flying()
     gull.floating()
     gull.flying()
     duck.floating()
@@ -17,18 +16,14 @@ fun main() {
 abstract class Creatures(
     val name: String,
 ) : MethodsOfTransportation {
-
 }
 
 class Crucian(
     name: String,
 ) : Creatures(name) {
-    override fun flying() {
-        println("$name плавает")
-    }
 
     override fun floating() {
-        println("$name не летает")
+        println("$name плавает")
     }
 }
 
@@ -40,7 +35,7 @@ class Gull(
     }
 
     override fun floating() {
-        println("$name умеет плавать")
+        println("$name плавает")
     }
 }
 
