@@ -47,7 +47,7 @@ class Room(
             if (i.nickName == nickName) {
                 val textBadge = newStatus
                 println("Статус изменён: $newStatus")
-            } else println("Для отправления сообщений необходимо зарегистрироваться")
+            } else println("Для изменения статуса необходима регистрация")
 
         }
     }
