@@ -2,98 +2,109 @@ package org.example.lesson_11
 
 fun main() {
 
+    val forumWork: ForumWork = ForumWork()
     println("Для регистрации на ФОРУМе введите ваше имя:")
     val user1: ForumMember = ForumMember(
-        userId = 1,
-        userName = readln()
-    )
-    val list: ForumWork = ForumWork()
-    list.createNewUser(
-        ForumMember(
-            userId = user1.userId,
-            userName = user1.userName
-        )
+        userName = forumWork.createNewUser(readln()).toString()
     )
     println("Введите ваше сообщение:")
-    var messageUser1: ForumMessage = ForumMessage(
-        authorId = user1.userId,
+    val userMessage1: ForumMessage = ForumMessage(
         message = readln()
     )
-    list.createNewMessage(
-        message = messageUser1
+    forumWork.createNewMessage(
+        userId = user1.userId
+    )
+    println("Введите ваше сообщение:")
+    userMessage1.message = readln()
+    forumWork.createNewMessage(
+        userId = user1.userId
     )
     println("Для регистрации на ФОРУМе введите ваше имя:")
     val user2: ForumMember = ForumMember(
-        userId = 2,
-        userName = readln()
+        userName = forumWork.createNewUser(readln()).toString()
     )
     println("Введите ваше сообщение:")
-    var messageUser2: ForumMessage = ForumMessage(
-        authorId = user2.userId,
+    val userMessage2: ForumMessage = ForumMessage(
         message = readln()
     )
-    list.createNewMessage(
-        message = messageUser2
+    forumWork.createNewMessage(
+        userId = user2.userId
     )
     println("Введите ваше сообщение:")
-    messageUser1 = ForumMessage(
-        authorId = user2.userId,
-        message = readln()
-    )
-    list.createNewMessage(
-        message = messageUser1
-    )
-    println("Введите ваше сообщение:")
-    messageUser2 = ForumMessage(
-        authorId = user2.userId,
-        message = readln()
-    )
-    list.createNewMessage(
-        message = messageUser2
+    userMessage2.message = readln()
+    forumWork.createNewMessage(
+        userId = user2.userId
     )
 
-    list.printThread()
+    forumWork.printThread()
 }
 
 class ForumWork(
 ) {
     var userId = 0
+    var message = ""
     val forumList: MutableList<ForumMember> = mutableListOf()
     val forumMessage: MutableList<ForumMessage> = mutableListOf()
 
-    fun createNewUser(userName: ForumMember): ForumMember {
-        forumList.add(userName)
-        userId++
-        forumList.add(userId)
-        return ForumMember(userId, userName.toString())
+    fun createNewUser(userName: String): MutableList<ForumMember> {
+        val id by lazy { userId++ }
+        forumList.add(
+            ForumMember(
+                userId = userId++,
+                userName = userName
+            )
+        )
+        println("Пользователь $userName создан")
+        return forumList
     }
 
-    fun createNewMessage(message: ForumMessage): ForumMessage {
-        if (forumList.contains(userId)) else println("Пользователь не найден")
-        val authorId = userId
-        forumMessage.add(message)
-        return ForumMessage(authorId, message.toString())
+    fun createNewMessage(userId: Int): MutableList<ForumMessage> {
+        for (i in forumList) {
+            if (i.userId == userId) {
+                println("Введите ваше сообщение:")
+                message = readln()
+                println("Сообщение $message создано")
+            } else println("Для отправления сообщений необходимо зарегистрироваться")
+        }
+        forumMessage.add(
+            ForumMessage(
+                authorId = userId,
+                message = message
+            )
+        )
+        return forumMessage
     }
 
     fun printThread() {
+        println(forumList.size)
+        println(forumMessage.size)
         val listOfUser = forumList.map {
             it.userName
         }
         val listOfMessage = forumMessage.map {
             it.message
         }
+        for (i in 4 downTo 1) {
+            println("${listOfUser.joinToString()}: ${listOfMessage.joinToString()}")
+        }
         println("${listOfUser.joinToString()}: ${listOfMessage.joinToString()}")
+        listOfUser.forEach { println(it) }
+        listOfMessage.forEach { println(it) }
+        println("${forumList.forEach { println(it) }}: ${forumMessage.forEach { println(it) }}")
+        forumList.forEach { println(it.toString()) }
+        forumMessage.forEach { println(it.toString()) }
     }
 }
 
 class ForumMember(
-    val userId: Int,
-    val userName: String = readln(),
+    var userId: Int = 0,
+    val userName: String,
 ) {
 }
 
 class ForumMessage(
-    val authorId: Int,
-    val message: String,
+    var authorId: Int = 0,
+    var message: String,
 ) {
+    val id by lazy { authorId++ }
 }
