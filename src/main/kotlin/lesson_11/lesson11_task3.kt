@@ -7,20 +7,22 @@ fun main() {
     val user1: Participant = Participant(
         nickName = readln(),
     )
+    room.addUser(
+        participant = user1
+    )
     println("Выберете статус:")
     user1.status(
         nickName = user1,
         textBadge = readln()
     )
-
     println("Для изменения статуса введите имя:")
-    val nickNameStatus = readln()
-
+    val nickName = readln()
     println("Введите новый статус:")
-    room.statusUpdate(
-        nickName = nickNameStatus,
+     room.statusUpdate(
+        nickName = nickName,
         newStatus = readln()
     )
+
 }
 
 class Room(
@@ -34,17 +36,19 @@ class Room(
         if (!findId) {
             listOfParticipants.add(participant)
             println("Пользователь добавлен")
-        } else println("Такой пользователь уже зарегистрирован")
+        } else println("Пользователь уже зарегистрирован")
         return listOfParticipants
     }
 
     fun statusUpdate(nickName: String, newStatus: String) {
-        val findNickName = listOfParticipants.contains(nickName)
-        if (findNickName) {
-            nickName.textBadge = newStatus
-            println("Статус изменён: $newStatus")
-        } else {
-            println("Статус не изменён")
+
+        for (i in listOfParticipants) {
+
+            if (i.nickName == nickName) {
+                val textBadge = newStatus
+                println("Статус изменён: $newStatus")
+            } else println("Для отправления сообщений необходимо зарегистрироваться")
+
         }
     }
 }
