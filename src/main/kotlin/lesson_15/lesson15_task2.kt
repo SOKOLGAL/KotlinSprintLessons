@@ -12,7 +12,11 @@ fun main() {
         precipitation = true,
         precipitationAmount = 3
     )
-    val dataForDay: MutableList<WeatherStationStats> = mutableListOf()
+
+    val weatherServer = WeatherServer()
+
+    weatherServer.sendMessage(temperature)
+    weatherServer.sendMessage(precipitation)
 }
 
 abstract class WeatherStationStats() {
@@ -25,7 +29,11 @@ class Temperature(
     val daytimeTemperature: Int,
     val nightTemperature: Int,
 ) : WeatherStationStats() {
-    override fun measurement() {}
+    override fun measurement() {
+        println(data)
+        println("Дневная температура: $daytimeTemperature")
+        println("Ночная температура: $nightTemperature")
+    }
 }
 
 class PrecipitationAmount(
@@ -33,17 +41,15 @@ class PrecipitationAmount(
     val precipitation: Boolean,
     val precipitationAmount: Int,
 ) : WeatherStationStats() {
-    override fun measurement() {}
-}
-
-class WeatherServer(weatherStationStats: MutableList<WeatherStationStats>) {
-    fun sendMessage() {
+    override fun measurement() {
+        println(data)
+        println("Наличие осаднов: $precipitation")
+        println("Количество осадков: ${precipitationAmount}мм")
     }
 }
 
-interface weatherConditions {
-    fun presenceOfPrecipitation()
-    fun measuringAmountOfPrecipitation()
-    fun dayTemperature()
-    fun temperatureAtNight()
+class WeatherServer() {
+    fun sendMessage(weatherData: WeatherStationStats) {
+        println(weatherData.measurement())
+    }
 }
