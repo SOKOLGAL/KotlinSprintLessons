@@ -18,11 +18,10 @@ fun main() {
     println("Для изменения статуса введите имя:")
     val nickName = readln()
     println("Введите новый статус:")
-     room.statusUpdate(
+    room.statusUpdate(
         nickName = nickName,
         newStatus = readln()
     )
-
 }
 
 class Room(
@@ -30,28 +29,25 @@ class Room(
     val roomName: String = "Комната просто поболтать",
     val listOfParticipants: MutableList<Participant> = mutableListOf(),
 ) {
-
     fun addUser(participant: Participant) {
         val userId = participant.userId++
-        val findId = listOfParticipants.contains(participant.userId)
-        if (i.userId !in listOfParticipants) {
-            listOfParticipants.add(participant)
-            println("Пользователь добавлен")
-        } else println("Пользователь уже зарегистрирован")
-//        return listOfParticipants
+        val findId = listOfParticipants.contains<Any>(userId)
+
+        if (findId) {
+            println("Пользователь уже зарегистрирован")
+        } else println("Пользователь добавлен")
+        listOfParticipants.add(participant)
     }
 
     fun statusUpdate(nickName: String, newStatus: String) {
-
         for (i in listOfParticipants) {
-
             if (i.nickName == nickName) {
                 val textBadge = newStatus
                 println("Статус изменён: $newStatus")
             } else println("Для изменения статуса необходима регистрация")
-
         }
     }
+
 }
 
 class Participant(
