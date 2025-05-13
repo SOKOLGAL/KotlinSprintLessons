@@ -31,13 +31,14 @@ class Room(
     val listOfParticipants: MutableList<Participant> = mutableListOf(),
 ) {
 
-    fun addUser(participant: Participant): MutableList<Participant> {
-        val findId = listOfParticipants.contains(participant)
-        if (!findId) {
+    fun addUser(participant: Participant) {
+        val userId = participant.userId++
+        val findId = listOfParticipants.contains(participant.userId)
+        if (i.userId !in listOfParticipants) {
             listOfParticipants.add(participant)
             println("Пользователь добавлен")
         } else println("Пользователь уже зарегистрирован")
-        return listOfParticipants
+//        return listOfParticipants
     }
 
     fun statusUpdate(nickName: String, newStatus: String) {
@@ -59,7 +60,6 @@ class Participant(
     var nickName: String,
     var textBadge: String = "микрофон выключен",
 ) {
-    val id by lazy { userId++ }
     fun status(nickName: Participant, textBadge: String) {
         println("Статус добавлен")
     }
