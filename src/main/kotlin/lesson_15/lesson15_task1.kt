@@ -15,12 +15,12 @@ fun main() {
 
 abstract class Creatures(
     val name: String,
-) : floating {
+) {
 }
 
 class Crucian(
     name: String,
-) : Creatures(name) {
+) : Creatures(name), floating {
 
     override fun floating() {
         println("$name плавает")
@@ -29,7 +29,7 @@ class Crucian(
 
 class Gull(
     name: String,
-) : Creatures(name), flying {
+) : Creatures(name), flying, floating {
     override fun flying() {
         println("$name летает")
     }
@@ -41,7 +41,7 @@ class Gull(
 
 class Duck(
     name: String,
-) : Creatures(name), flying {
+) : Creatures(name), flying, floating {
     override fun flying() {
         println("$name летает")
     }
