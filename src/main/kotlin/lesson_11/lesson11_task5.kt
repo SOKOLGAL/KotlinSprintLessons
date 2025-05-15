@@ -41,7 +41,7 @@ class ForumWork(
     val forumList: MutableList<ForumMember> = mutableListOf()
     val forumMessage: MutableList<ForumMessage> = mutableListOf()
 
-    fun createNewUser(userName: String): MutableList<ForumMember> {
+    fun createNewUser(userName: String) {
 
         forumList.add(
             ForumMember(
@@ -50,10 +50,10 @@ class ForumWork(
             )
         )
         println("Пользователь $userName создан")
-        return forumList
+
     }
 
-    fun createNewMessage(userId: Int): MutableList<ForumMessage> {
+    fun createNewMessage(userId: Int) {
         var authorId = 0
         for (i in forumList) {
             if (i.userId == userId) {
@@ -68,7 +68,6 @@ class ForumWork(
                 message = message
             )
         )
-        return forumMessage
     }
 
     fun printThread() {
