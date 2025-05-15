@@ -61,7 +61,7 @@ open class Chat() {
     }
 
     fun printChat() {
-        println("${messageList.groupBy { id }} \n ${childMessageList.groupBy { parentMessageId }}")
+        println("${messageList.groupBy { id }} \n ${childMessageList.groupBy { idChild }}")
     }
 }
 
