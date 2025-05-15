@@ -20,7 +20,6 @@ fun main() {
         parentMessageId = chat.parentMessageId,
         messageChild = readln()
     )
-
     println("Для продолжения обсуждения введите ваше сообщение:")
     chat.addThreadMessage(
         parentMessageId = chat.parentMessageId,
@@ -49,8 +48,7 @@ open class Chat() {
     }
 
     fun addThreadMessage(parentMessageId: Int, messageChild: String) {
-        val id = idChild
-        val newThreadMessage = ChildMessage(
+               val newThreadMessage = ChildMessage(
             id = idChild,
             author = "",
             parentMessageId = parentMessageId,
