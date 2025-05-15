@@ -8,7 +8,7 @@ fun main() {
         radius = 15.0
     )
 
-    circle.calculatingCircumference()
+    circle.calculatingLengthCircumference()
     circle.calculatingAreaOfCircle()
 
 
@@ -20,7 +20,7 @@ class Circle(
 
     private val pi = 3.14
 
-    fun calculatingCircumference() {
+    fun calculatingLengthCircumference() {
         val circumference: Double = CALCULATE_LENGTH_AREA * pi * radius
         println(circumference)
     }
