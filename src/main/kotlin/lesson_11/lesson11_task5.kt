@@ -42,7 +42,6 @@ class ForumWork(
     val forumMessage: MutableList<ForumMessage> = mutableListOf()
 
     fun createNewUser(userName: String) {
-
         forumList.add(
             ForumMember(
                 userId = userId++,
@@ -50,7 +49,6 @@ class ForumWork(
             )
         )
         println("Пользователь $userName создан")
-
     }
 
     fun createNewMessage(userId: Int) {
@@ -78,7 +76,6 @@ class ForumWork(
         }
     }
 }
-
 
 class ForumMember(
     var userId: Int = 0,
