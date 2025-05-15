@@ -30,7 +30,6 @@ class Temperature(
     val nightTemperature: Int,
 ) : WeatherStationStats() {
     override fun measurement() {
-        println(data)
         println("Дневная температура: $daytimeTemperature")
         println("Ночная температура: $nightTemperature")
     }
@@ -42,7 +41,6 @@ class PrecipitationAmount(
     val precipitationAmount: Int,
 ) : WeatherStationStats() {
     override fun measurement() {
-        println(data)
         println("Наличие осаднов: $precipitation")
         println("Количество осадков: ${precipitationAmount}мм")
     }
