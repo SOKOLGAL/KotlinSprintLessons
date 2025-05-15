@@ -10,11 +10,10 @@ fun main() {
     room.addUser(
         participant = user1
     )
+
     println("Выберете статус:")
-    user1.status(
-        nickName = user1,
-        textBadge = readln()
-    )
+    user1.textBadge = readln()
+
     println("Для изменения статуса введите имя:")
     val nickName = readln()
     println("Введите новый статус:")
@@ -22,6 +21,7 @@ fun main() {
         nickName = nickName,
         newStatus = readln()
     )
+
 }
 
 class Room(
@@ -35,19 +35,21 @@ class Room(
 
         if (findId) {
             println("Пользователь уже зарегистрирован")
-        } else println("Пользователь добавлен")
+        } else {
+            println("Пользователь добавлен")
+        }
+        println(participant.userId)
         listOfParticipants.add(participant)
     }
 
     fun statusUpdate(nickName: String, newStatus: String) {
         for (i in listOfParticipants) {
             if (i.nickName == nickName) {
-                val textBadge = newStatus
+                i.textBadge = newStatus
                 println("Статус изменён: $newStatus")
             } else println("Для изменения статуса необходима регистрация")
         }
     }
-
 }
 
 class Participant(
@@ -56,7 +58,4 @@ class Participant(
     var nickName: String,
     var textBadge: String = "микрофон выключен",
 ) {
-    fun status(nickName: Participant, textBadge: String) {
-        println("Статус добавлен")
-    }
 }
