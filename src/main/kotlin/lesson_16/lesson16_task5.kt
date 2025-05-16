@@ -20,19 +20,18 @@ fun main() {
 
 class Player() {
     val name: String = "Непобедимый"
-   private var health: Int = 100
+    private var health: Int = 100
     var impactForce: Int = 25
     val player: MutableList<Player> = mutableListOf()
 
     fun takingDamage() {
-               if (health > 0) {
+        if (health > 0) {
             println("Игрок $name получил урон")
             val lossOfHealth = health - impactForce
             health = lossOfHealth
             println("Уровень здоровья у игрока $name равен $health")
         } else killing()
     }
-
 
     fun receivingTreatment() {
         println("Игрок $name получил лечение")
