@@ -31,14 +31,13 @@ class Room(
 ) {
     fun addUser(participant: Participant) {
         val userId = participant.userId++
-        val findId = listOfParticipants.contains<Any>(userId)
-
-        if (findId) {
-            println("Пользователь уже зарегистрирован")
-        } else {
-            println("Пользователь добавлен")
+        for(i in listOfParticipants) {
+            if (i.userId == userId) {
+                println("Пользователь уже зарегистрирован")
+            } else {
+                println("Пользователь добавлен")
+            }
         }
-        println(participant.userId)
         listOfParticipants.add(participant)
     }
 
