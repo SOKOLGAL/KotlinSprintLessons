@@ -48,7 +48,7 @@ open class Chat() {
     }
 
     fun addThreadMessage(parentMessageId: Int, messageChild: String) {
-               val newThreadMessage = ChildMessage(
+        val newThreadMessage = ChildMessage(
             id = idChild,
             author = "",
             parentMessageId = parentMessageId,
@@ -59,7 +59,14 @@ open class Chat() {
     }
 
     fun printChat() {
-        println("${messageList.groupBy { id }} \n ${childMessageList.groupBy { idChild }}")
+        for (i in messageList) {
+//            messageList.groupBy { id }
+            println("${i.author}: ${i.text}")
+        }
+        for (i in childMessageList) {
+//            childMessageList.groupBy { idChild }
+            println("   ${i.idChild}: ${i.text}")
+        }
     }
 }
 
