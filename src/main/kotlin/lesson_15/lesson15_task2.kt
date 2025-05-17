@@ -48,6 +48,6 @@ class PrecipitationAmount(
 
 class WeatherServer() {
     fun sendMessage(weatherData: WeatherStationStats) {
-        println(weatherData.measurement())
+        weatherData.measurement()
     }
 }
