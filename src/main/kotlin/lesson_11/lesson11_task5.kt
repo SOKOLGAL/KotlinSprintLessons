@@ -58,7 +58,9 @@ class ForumWork(
                 println("Введите ваше сообщение:")
                 message = readln()
                 println("Сообщение $message создано")
-            } else println("Для отправления сообщений необходимо зарегистрироваться")
+            } else {
+                println("Для отправления сообщений необходимо зарегистрироваться")
+            }
         }
         forumMessage.add(
             ForumMessage(
@@ -70,10 +72,15 @@ class ForumWork(
 
     fun printThread() {
         for (i in forumList) {
-            for (j in forumMessage) {
-                println("${i.userName}: ${j.message}")
-            }
+//            val message = forumMessage
+            println("${i.userName}: ${message}")
         }
+
+//        for (i in forumList) {
+//            for (j in forumMessage) {
+//                println("${i.userName}: ${j.message}")
+//            }
+//        }
     }
 }
 
