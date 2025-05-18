@@ -37,6 +37,7 @@ fun main() {
 class ForumWork(
 ) {
     var userId = 0
+    var authorId = 0
     var message = ""
     val forumList: MutableList<ForumMember> = mutableListOf()
     val forumMessage: MutableList<ForumMessage> = mutableListOf()
@@ -49,36 +50,55 @@ class ForumWork(
             )
         )
         println("Пользователь $userName создан")
+        println(userId)
     }
 
     fun createNewMessage(userId: Int) {
-        var authorId = 0
         for (i in forumList) {
             if (i.userId == userId) {
                 println("Введите ваше сообщение:")
-                message = readln()
+                forumMessage.add(
+                    ForumMessage(
+                        authorId = userId,
+                        message = readln()
+                    )
+                )
                 println("Сообщение $message создано")
-            } else {
+            } else if (false) {
                 println("Для отправления сообщений необходимо зарегистрироваться")
             }
         }
-        forumMessage.add(
-            ForumMessage(
-                authorId = userId,
-                message = message
-            )
-        )
+        println(authorId)
     }
 
     fun printThread() {
         for (i in forumList) {
-//            val message = forumMessage
-            println("${i.userName}: ${message}")
+            for (j in forumMessage) {
+                if (i.userId == j.authorId) {
+                    println("${i.userName}: ${j.message}")
+                }
+            }
         }
 
 //        for (i in forumList) {
-//            for (j in forumMessage) {
-//                println("${i.userName}: ${j.message}")
+//            println(i.userName)
+//        }
+//        for (i in forumMessage) {
+//            println(i.message)
+//        }
+
+//        val ids = forumList.groupBy { it.userId }
+//        val authorIds = forumMessage.groupBy { it.authorId }
+//
+//        for (id in ids) {
+//            for (forumList in id.value) {
+//                println(forumList.userName)
+//            }
+//        }
+//
+//        for (authorId in authorIds) {
+//            for (forumMessage in authorId.value) {
+//                println("${forumMessage.message}")
 //            }
 //        }
     }
