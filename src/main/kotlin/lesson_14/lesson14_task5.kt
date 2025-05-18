@@ -59,14 +59,29 @@ open class Chat() {
     }
 
     fun printChat() {
-        for (i in messageList) {
-//            messageList.groupBy { id }
-            println("${i.author}: ${i.text}")
+        val message1 = messageList.groupBy { id }
+        val childMessage1 = childMessageList.groupBy { parentMessageId }
+
+        for (i in message1) {
+            println("$i")
         }
-        for (i in childMessageList) {
-//            childMessageList.groupBy { idChild }
-            println("   ${i.idChild}: ${i.text}")
+        for (i in childMessage1) {
+            println("   $i")
         }
+
+        for (i in messageList.groupBy { id }) {
+            println("$i")
+        }
+        for (i in childMessageList.groupBy { parentMessageId }) {
+            println("   $i")
+        }
+
+//        for (i in messageList) {
+//            println(i.text)
+//        }
+//        for (i in childMessageList) {
+//            println("   ${i.text}")
+//        }
     }
 }
 
