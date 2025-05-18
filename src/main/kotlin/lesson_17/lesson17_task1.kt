@@ -1,6 +1,7 @@
 package org.example.lesson_17
 
 fun main() {
+
     val quiz = Quiz()
     println(quiz.question)
     println(quiz.answer)
