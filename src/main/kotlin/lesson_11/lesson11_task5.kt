@@ -50,7 +50,6 @@ class ForumWork(
             )
         )
         println("Пользователь $userName создан")
-        println(userId)
     }
 
     fun createNewMessage(userId: Int) {
@@ -63,44 +62,23 @@ class ForumWork(
                         message = readln()
                     )
                 )
+                println(authorId)
+                println(userId)
                 println("Сообщение $message создано")
             } else if (false) {
                 println("Для отправления сообщений необходимо зарегистрироваться")
             }
         }
-        println(authorId)
     }
 
     fun printThread() {
         for (i in forumList) {
             for (j in forumMessage) {
-                if (i.userId == j.authorId) {
-                    println("${i.userName}: ${j.message}")
+                when {
+                    i.userId == j.authorId -> println("${i.userName}: ${j.message}")
                 }
             }
         }
-
-//        for (i in forumList) {
-//            println(i.userName)
-//        }
-//        for (i in forumMessage) {
-//            println(i.message)
-//        }
-
-//        val ids = forumList.groupBy { it.userId }
-//        val authorIds = forumMessage.groupBy { it.authorId }
-//
-//        for (id in ids) {
-//            for (forumList in id.value) {
-//                println(forumList.userName)
-//            }
-//        }
-//
-//        for (authorId in authorIds) {
-//            for (forumMessage in authorId.value) {
-//                println("${forumMessage.message}")
-//            }
-//        }
     }
 }
 
