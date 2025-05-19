@@ -3,23 +3,25 @@ package org.example.lesson_17
 fun main() {
 
     val folder = Folder()
-    folder.secret
+
+    println(folder.name)
 
 }
 
 class Folder() {
-    val name: String = "Корпоратив 2025"
-    var numberOfFiles = 74
-    var secret: Boolean = true
+
+    var name: String = "Корпоратив 2025"
         get() {
-            if (field == false) {
-                println(name)
-                println(numberOfFiles)
-            } else if (true) {
-                println("Скрытая папка")
+            if (secret == true) {
+                name = "Скрытая папка"
                 numberOfFiles = 0
+                println("Количество файлов - $numberOfFiles")
+            } else {
+                name = field
                 println("Количество файлов - $numberOfFiles")
             }
             return field
         }
+    var numberOfFiles = 74
+    var secret: Boolean = true
 }
