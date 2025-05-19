@@ -4,21 +4,21 @@ fun main() {
 
     val truck1 = Truck(
         carName = "Бычок",
-        numberOfPassengers = 1,
-        quantityOfCargo = 1,
+        passengers = 0,
+        weightOfCargo = 1,
     )
     val passengerCar1 = PassengerCar(
         carName = "Ласточка",
-        numberOfPassengers = 3,
+        passengers = 2,
     )
     val passengerCar2 = PassengerCar(
         carName = "Волга",
-        numberOfPassengers = 2
+        passengers = 3,
     )
     val truck2 = Truck(
         carName = "Камаз",
-        numberOfPassengers = 0,
-        quantityOfCargo = 1
+        passengers = 1,
+        weightOfCargo = 1,
     )
 
     truck1.loadingTruck()
@@ -55,6 +55,7 @@ abstract class Car(
     val maxNumberOfPassengers: Int,
     val minNumberOfPassengers: Int,
     var numberOfPassengers: Int,
+    val passengers: Int,
     val cargoTransportation: Boolean,
 ) {
 }
@@ -63,70 +64,84 @@ class Truck(
     carName: String,
     maxNumberOfPassengers: Int = 1,
     minNumberOfPassengers: Int = 0,
-    numberOfPassengers: Int,
+    passengers: Int,
+    numberOfPassengers: Int = 0,
     val maxQuantityOfCargo: Int = 2,
     var minQuantityOfCargo: Int = 0,
-    var quantityOfCargo: Int,
+    val weightOfCargo: Int,
+    var quantityOfCargo: Int = 0,
 ) : Car(
-    carName, maxNumberOfPassengers, minNumberOfPassengers, numberOfPassengers,
+    carName, maxNumberOfPassengers, minNumberOfPassengers, passengers, numberOfPassengers,
     cargoTransportation = true
 ), moving, loadingTruck, loadingPassenger {
 
-    val cargo: Boolean = quantityOfCargo <= maxQuantityOfCargo
-    val passenger: Boolean = numberOfPassengers <= maxNumberOfPassengers
+    val cargo: Boolean = weightOfCargo <= maxQuantityOfCargo
+    val quantityOfPassenger: Boolean = passengers <= maxNumberOfPassengers
 
     override fun moving() {
-        if (quantityOfCargo == minQuantityOfCargo) {
+        if (weightOfCargo == minQuantityOfCargo) {
+            quantityOfCargo = weightOfCargo
             println(
                 "Грузовая машина $carName выехала без груза"
             )
         } else if (cargo) {
+            quantityOfCargo = weightOfCargo
             println("Грузовая машина $carName везёт груз: ${quantityOfCargo}т")
-        } else if (quantityOfCargo >= maxQuantityOfCargo) {
+        } else if (weightOfCargo >= maxQuantityOfCargo) {
+            quantityOfCargo = maxQuantityOfCargo
             println(
                 "Грузовая машина $carName везёт груз: ${quantityOfCargo}т"
             )
         }
 
-        if (numberOfPassengers == minNumberOfPassengers) {
+        if (quantityOfPassenger) {
+            numberOfPassengers = passengers
+            println("Грузовая машина $carName везёт пассажиров: $numberOfPassengers")
+        } else if (passengers == minNumberOfPassengers) {
+            numberOfPassengers = passengers
             println("Грузовая машина $carName выехала без пассажиров")
-        } else if (numberOfPassengers >= maxNumberOfPassengers) {
+        } else if (passengers >= maxNumberOfPassengers) {
+            numberOfPassengers = maxNumberOfPassengers
             println(
                 "Грузовая машина $carName везёт пассажиров: $numberOfPassengers"
             )
-        } else if (passenger) {
-            println("Грузовая машина $carName везёт пассажиров: $numberOfPassengers")
         }
     }
 
     override fun loadingTruck() {
-        if (quantityOfCargo == minQuantityOfCargo) {
+        if (weightOfCargo == minQuantityOfCargo) {
+            quantityOfCargo = weightOfCargo
             println("В грузовую машину $carName не загружен груз")
         } else if (cargo) {
+            quantityOfCargo = weightOfCargo
             println("В грузовую машину $carName загружен груз: ${quantityOfCargo}т")
-        } else if (quantityOfCargo >= maxQuantityOfCargo) {
+        } else if (weightOfCargo >= maxQuantityOfCargo) {
             quantityOfCargo = maxQuantityOfCargo
             println("В грузовую машину $carName загружено груза только: ${quantityOfCargo}т")
         }
     }
 
     override fun unloadingTruck() {
-        if (quantityOfCargo == minQuantityOfCargo) {
+        if (weightOfCargo == minQuantityOfCargo) {
+            quantityOfCargo = weightOfCargo
             println("Грузовая машина $carName не доставила груз")
         } else if (cargo) {
+            quantityOfCargo = weightOfCargo
             println("На грузовой машине $carName доставлена $quantityOfCargo тонна груза")
-        } else if (quantityOfCargo >= maxQuantityOfCargo) {
+        } else if (weightOfCargo >= maxQuantityOfCargo) {
             quantityOfCargo = maxQuantityOfCargo
             println("На грузовой машине $carName доставлена $quantityOfCargo тонна груза")
         }
     }
 
     override fun loadingPassengers() {
-        if (numberOfPassengers == minNumberOfPassengers) {
-            println("В грузовую машину $carName не загружен пассажир")
-        } else if (passenger) {
+        if (quantityOfPassenger) {
+            numberOfPassengers = passengers
             println("В грузовой машине $carName для перевозки $numberOfPassengers пассажир")
-        } else if (numberOfPassengers >= maxNumberOfPassengers) {
+        } else if (passengers == minNumberOfPassengers) {
+            numberOfPassengers = passengers
+            println("В грузовую машину $carName не загружен пассажир")
+        } else if (passengers >= maxNumberOfPassengers) {
             numberOfPassengers = maxNumberOfPassengers
             println(
                 "В грузовую машину $carName для перевозки загружен только " +
@@ -136,14 +151,15 @@ class Truck(
     }
 
     override fun unloadingPassengers() {
-        if (numberOfPassengers == minNumberOfPassengers) {
-            numberOfPassengers = minNumberOfPassengers
-            println("Грузовая машина $carName не доставила пассажира")
-        } else if (passenger) {
+        if (quantityOfPassenger) {
+            numberOfPassengers = passengers
             println("На грузовой машине $carName доставлен $numberOfPassengers пассажир")
-        } else if (numberOfPassengers >= maxNumberOfPassengers) {
+        } else if (passengers >= maxNumberOfPassengers) {
             numberOfPassengers = maxNumberOfPassengers
             println("На грузовой машине $carName доставлен $numberOfPassengers пассажир")
+        } else if (passengers == minNumberOfPassengers) {
+            numberOfPassengers = passengers
+            println("Грузовая машина $carName не доставила пассажира")
         }
     }
 }
@@ -152,46 +168,54 @@ class PassengerCar(
     carName: String,
     maxNumberOfPassengers: Int = 3,
     minNumberOfPassengers: Int = 0,
-    numberOfPassengers: Int,
+    numberOfPassengers: Int = 0,
+    passengers: Int,
     cargoTransportation: Boolean = false,
 ) : Car(
-    carName, maxNumberOfPassengers, minNumberOfPassengers, numberOfPassengers,
+    carName, maxNumberOfPassengers, minNumberOfPassengers, numberOfPassengers, passengers,
     cargoTransportation = false
 ), moving, loadingPassenger {
 
-    val passenger: Boolean = numberOfPassengers <= maxNumberOfPassengers
+    val quantityOfPassenger: Boolean = passengers <= maxNumberOfPassengers
 
     override fun moving() {
-        if (numberOfPassengers == 0) {
+        if (passengers == minNumberOfPassengers) {
+            numberOfPassengers = passengers
             println("Легковая машина $carName не везёт пассажиров")
-        } else if (passenger) {
+        } else if (quantityOfPassenger) {
+            numberOfPassengers = passengers
             println("Легковая машина $carName выехала с $numberOfPassengers пассажирами")
-        } else if (numberOfPassengers >= maxNumberOfPassengers) {
+        } else if (passengers >= maxNumberOfPassengers) {
             numberOfPassengers = maxNumberOfPassengers
             println("Легковая машина $carName везёт только $numberOfPassengers пассажира")
         }
     }
 
     override fun loadingPassengers() {
-        if (numberOfPassengers == 0) {
+        if (passengers == minNumberOfPassengers) {
+            numberOfPassengers = passengers
             println("В легковую машину $carName для перевозки не размещено пассажиров")
-        } else if (passenger) {
+        } else if (quantityOfPassenger) {
+            numberOfPassengers = passengers
             println("В легковой машине $carName для перевозки $numberOfPassengers пассажира")
-        } else if (numberOfPassengers >= maxNumberOfPassengers) {
+        } else if (passengers >= maxNumberOfPassengers) {
             numberOfPassengers = maxNumberOfPassengers
             println(
                 "В легковую машину $carName для перевозки размещено " +
-                        "только $maxNumberOfPassengers пассажира"
+                        "только $numberOfPassengers пассажира"
             )
         }
     }
 
     override fun unloadingPassengers() {
-        if (numberOfPassengers == 0) {
+        if (passengers == minNumberOfPassengers) {
+            numberOfPassengers = passengers
             println("Легковая машина $carName не доставила пассажиров")
-        } else if (passenger) {
+        } else if (quantityOfPassenger) {
+            numberOfPassengers = passengers
             println("Легковая машина $carName доставила $numberOfPassengers пассажира")
         } else if (numberOfPassengers >= maxNumberOfPassengers) {
+            numberOfPassengers = maxNumberOfPassengers
             println("Легковая машина $carName доставила только $numberOfPassengers пассажира")
         }
     }
