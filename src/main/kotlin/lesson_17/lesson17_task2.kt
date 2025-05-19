@@ -5,7 +5,6 @@ fun main() {
     val ship = Ship()
     println("Название корабля: ${ship.name}")
     ship.name = "Восточный берег"
-    println("Название корабля: ${ship.name}")
 
 }
 
