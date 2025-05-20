@@ -3,13 +3,14 @@ package org.example.lesson_11
 fun main() {
 
     val forumWork: ForumWork = ForumWork()
+
     println("Для регистрации на ФОРУМе введите ваше имя:")
+
     val user1: ForumMember = ForumMember(
-        userId = 1,
+        userId = forumWork.userId,
         userName = readln()
     )
     forumWork.createNewUser(
-        userId = user1.userId,
         userName = user1.userName
     )
     forumWork.createNewMessage(
@@ -21,11 +22,10 @@ fun main() {
 
     println("Для регистрации на ФОРУМе введите ваше имя:")
     val user2: ForumMember = ForumMember(
-        userId = 2,
+        userId = forumWork.userId,
         userName = readln()
     )
     forumWork.createNewUser(
-        userId = user2.userId,
         userName = user2.userName
     )
     forumWork.createNewMessage(
@@ -42,11 +42,12 @@ class ForumWork(
 ) {
     val forumList: MutableList<ForumMember> = mutableListOf()
     val forumMessage: MutableList<ForumMessage> = mutableListOf()
+    var userId = 0
 
-    fun createNewUser(userId: Int, userName: String) {
+    fun createNewUser(userName: String) {
         forumList.add(
             ForumMember(
-                userId = userId,
+                userId = userId++,
                 userName = userName
             )
         )
