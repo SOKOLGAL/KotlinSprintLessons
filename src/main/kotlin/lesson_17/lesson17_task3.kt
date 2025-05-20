@@ -16,11 +16,12 @@ class Folder() {
                 name = "Скрытая папка"
                 numberOfFiles = 0
                 println("Количество файлов - $numberOfFiles")
+                return field
             } else {
                 name = field
                 println("Количество файлов - $numberOfFiles")
+                return field
             }
-            return field
         }
     var numberOfFiles = 74
     var secret: Boolean = true
