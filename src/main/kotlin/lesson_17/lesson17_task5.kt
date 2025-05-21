@@ -19,15 +19,12 @@ class User(
     val password: String,
 ) {
     val passwordLength: Int = password.length
-    val star = '*'
-
+    val star = '*'.toString()
+    val stars = star.repeat(passwordLength)
     var changePassword: String = password
         get() {
             field
-//            for (i in COEFFICIENT_FOR_STARS until passwordLength) {
-//                                    println(star)
-//            }
-            return star.toString()
+            return stars
         }
         set(value) {
             println("Вы не можете изменить пароль")
@@ -41,5 +38,3 @@ class User(
 
     val change = false
 }
-
-const val COEFFICIENT_FOR_STARS = 1
