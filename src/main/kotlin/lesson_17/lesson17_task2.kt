@@ -2,17 +2,22 @@ package org.example.lesson_17
 
 fun main() {
 
-    val ship = Ship()
+    val ship = Ship(
+        name = "Победа"
+    )
 
     println(ship.name)
-    ship.name = "Восточный берег"
+    ship.newName = "Восточный берег"
     println(ship.name)
 
 }
 
-class Ship() {
-    private var changeName: Boolean = false
-    var name = "Победа"
+class Ship(
+    val name: String,
+) {
+    private val changeName: Boolean = false
+
+    var newName = name
         set(value) {
             println("Предупреждение! Имя корабля менять нельзя!")
         }
