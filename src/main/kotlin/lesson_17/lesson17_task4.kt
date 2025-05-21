@@ -7,7 +7,15 @@ fun main() {
         initialLocation = "Пункт приема посылок",
     )
 
-    parcel.newCurrentLocation = "Сортировочный терминал"
+    println(parcel.initialLocation)
+    println(parcel.movementCounter)
+
+    parcel.currentLocation = "Сортировочный терминал"
+
+    println(parcel.currentLocation)
+    println(parcel.movementCounter)
+
+    parcel.currentLocation = "Склад"
 
     println(parcel.currentLocation)
     println(parcel.movementCounter)
@@ -16,14 +24,13 @@ fun main() {
 
 class Parcel(
     val parcelNumber: Long,
-    val initialLocation: String,
+    var initialLocation: String,
 ) {
-    var currentLocation = initialLocation
-    var newCurrentLocation: String = ""
+
+    var currentLocation = ""
         set(value) {
-            field = value
-            if (field == value) {
-                currentLocation = newCurrentLocation
+            if (field != value) {
+                field = value
                 movementCounter++
             }
         }
