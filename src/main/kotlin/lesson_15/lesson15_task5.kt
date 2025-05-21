@@ -26,12 +26,12 @@ fun main() {
     truck1.moving()
     truck1.unloadingTruck()
     truck1.unloadingPassengers()
-//    passengerCar1.loadingPassengers()
-//    passengerCar1.moving()
-//    passengerCar1.unloadingPassengers()
-//    passengerCar2.loadingPassengers()
-//    passengerCar2.moving()
-//    passengerCar2.unloadingPassengers()
+    passengerCar1.loadingPassengers()
+    passengerCar1.moving()
+    passengerCar1.unloadingPassengers()
+    passengerCar2.loadingPassengers()
+    passengerCar2.moving()
+    passengerCar2.unloadingPassengers()
     truck2.loadingTruck()
     truck2.loadingPassengers()
     truck2.moving()
@@ -102,7 +102,7 @@ class Truck(
         if (passengers == minNumberOfPassengers) {
             passengersForTransportation = passengers
             println("В грузовую машину $carName не загружен пассажир")
-        } else if (passengers <= maxNumberOfPassengers) {
+        } else if (passengers == maxNumberOfPassengers) {
             passengersForTransportation = passengers
             println("В грузовой машине $carName для перевозки $passengersForTransportation пассажир")
         } else if (passengers > maxNumberOfPassengers) {
@@ -115,7 +115,7 @@ class Truck(
     }
 
     override fun unloadingPassengers() {
-        if (passengers <= maxNumberOfPassengers) {
+        if (passengers == maxNumberOfPassengers) {
             println("На грузовой машине $carName доставлен $passengersForTransportation пассажир")
         } else if (passengers > maxNumberOfPassengers) {
             println("На грузовой машине $carName доставлен $passengersForTransportation пассажир")
