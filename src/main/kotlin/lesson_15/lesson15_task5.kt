@@ -21,7 +21,7 @@ fun main() {
         weightOfCargo = 1,
     )
 
-    truck1.loadingTruck()
+    truck1.loadingTruck(quantityOfCargo = 1)
     truck1.loadingPassengers(
         passengersForTransportation = 1
     )
@@ -38,7 +38,7 @@ fun main() {
     )
     passengerCar2.moving()
     passengerCar2.unloadingPassengers()
-    truck2.loadingTruck()
+    truck2.loadingTruck(quantityOfCargo = 1)
     truck2.loadingPassengers(
         passengersForTransportation = 1
     )
