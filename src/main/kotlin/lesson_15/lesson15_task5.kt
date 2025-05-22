@@ -207,11 +207,11 @@ interface moving {
 }
 
 interface loadingTruck {
-    fun loadingTruck()
+    fun loadingTruck(quantityOfCargo: Int)
     fun unloadingTruck()
 }
 
 interface loadingPassenger {
-    fun loadingPassengers()
+    fun loadingPassengers(passengersForTransportation: Int)
     fun unloadingPassengers()
 }
