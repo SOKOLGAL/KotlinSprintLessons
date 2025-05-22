@@ -18,13 +18,9 @@ class User(
     var login: String,
     val password: String,
 ) {
-    val passwordLength: Int = password.length
-    val star = '*'.toString()
-    val stars = star.repeat(passwordLength)
     var changePassword: String = password
         get() {
-            field
-            return stars
+            return "*".repeat(field.length)
         }
         set(value) {
             println("Вы не можете изменить пароль")
