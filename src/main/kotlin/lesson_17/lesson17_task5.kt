@@ -25,11 +25,9 @@ class User(
             println("Вы не можете изменить пароль")
         }
 
-    var changeLogin = login
+    var changeLogin: String = login
         set(value) {
             field = value
             println("Логин успешно изменён")
         }
-
-    val change = false
 }
