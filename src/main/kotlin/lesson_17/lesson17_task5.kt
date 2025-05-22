@@ -13,7 +13,6 @@ fun main() {
 
 }
 
-
 class User(
     var login: String,
     val password: String,
