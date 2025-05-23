@@ -2,12 +2,17 @@ package org.example.lesson_18
 
 fun main() {
 
-    val dice = Dice()
-    val fourSidesDice = FourSidesDice()
-    val sixSidesDice = SixSidesDice()
-    val eightSidesDice = EightSidesDice()
+    val sidesDice1 = SidesDice(
+        4
+    )
+    val sidesDice2 = SidesDice(
+        6
+    )
+    val sidesDice3 = SidesDice(
+        8
+    )
 
-    val list = arrayOf<Dice>(fourSidesDice, sixSidesDice, eightSidesDice)
+    val list = arrayOf<Dice>(sidesDice1, sidesDice2, sidesDice3)
 
     showAllDiceRolls(list)
 
@@ -19,32 +24,12 @@ fun showAllDiceRolls(dice: Array<Dice>) {
     }
 }
 
-open class Dice {
-    open fun diceThrower() {}
+abstract class Dice {
+    abstract fun diceThrower()
 }
 
-class FourSidesDice(
-    val numberOfFaces: Int = 4,
-) : Dice() {
-
-    override fun diceThrower() {
-        val drop: Int = (1..numberOfFaces).random()
-        println("Выпало $drop")
-    }
-}
-
-class SixSidesDice(
-    val numberOfFaces: Int = 6,
-) : Dice() {
-
-    override fun diceThrower() {
-        val drop: Int = (1..numberOfFaces).random()
-        println("Выпало $drop")
-    }
-}
-
-class EightSidesDice(
-    val numberOfFaces: Int = 8,
+class SidesDice(
+    val numberOfFaces: Int,
 ) : Dice() {
 
     override fun diceThrower() {
