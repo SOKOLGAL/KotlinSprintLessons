@@ -21,25 +21,29 @@ fun main() {
     )
 
     product1.productInformation()
-    println()
     product2.productInformation()
-    println()
     product3.productInformation()
 
 }
 
-enum class Category() {
-    CLOTH,
-    STATIONERY,
-    SUNDRY;
-
-    fun textCategoryName(category: Category) {
-        when (category) {
-            CLOTH -> println("Категория: Одежда")
-            STATIONERY -> println("Категория: Канцелярские товары")
-            SUNDRY -> println("Категория: Разное")
+enum class Category {
+    CLOTH {
+        override fun textCategoryName(): String {
+            return "Категория: Одежда"
         }
-    }
+    },
+    STATIONERY {
+        override fun textCategoryName(): String {
+            return "Категория: Канцелярские товары"
+        }
+    },
+    SUNDRY {
+        override fun textCategoryName(): String {
+            return "Категория: Разное"
+        }
+    };
+
+    abstract fun textCategoryName(): String
 }
 
 class Product(
@@ -47,6 +51,7 @@ class Product(
     val id: Long,
     val category: Category,
 ) {
+
     fun productInformation() {
         println("Название товара: $name")
         println("ID товара: $id")
@@ -54,12 +59,12 @@ class Product(
             category = category
         )
     }
-}
 
-fun definitionOfCategory(category: Category) {
-    when (category) {
-        CLOTH -> println("Категория: Одежда")
-        STATIONERY -> println("Категория: Канцелярские товары")
-        SUNDRY -> println("Категория: Разное")
+    fun definitionOfCategory(category: Category) {
+        when (category) {
+            CLOTH -> println("Категория: Одежда")
+            STATIONERY -> println("Категория: Канцелярские товары")
+            SUNDRY -> println("Категория: Разное")
+        }
     }
 }
