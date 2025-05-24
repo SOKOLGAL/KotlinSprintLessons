@@ -10,18 +10,10 @@ fun main() {
 
     for (i in typesOfFish) {
         when (i) {
-            GUPPY -> getNameFish(
-                aquarium = GUPPY
-            )
-            ANGELFISH -> getNameFish(
-                aquarium = ANGELFISH
-            )
-            GOLDFISH -> getNameFish(
-                aquarium = GOLDFISH
-            )
-            SIAMESE_FIGHTING_FISH -> getNameFish(
-                aquarium = SIAMESE_FIGHTING_FISH
-            )
+            GUPPY -> GUPPY.getNameFish()
+            ANGELFISH -> ANGELFISH.getNameFish()
+            GOLDFISH -> GOLDFISH.getNameFish()
+            SIAMESE_FIGHTING_FISH -> SIAMESE_FIGHTING_FISH.getNameFish()
         }
     }
 
@@ -31,14 +23,14 @@ enum class Aquarium {
     GUPPY,
     ANGELFISH,
     GOLDFISH,
-    SIAMESE_FIGHTING_FISH,
-}
+    SIAMESE_FIGHTING_FISH;
 
-fun getNameFish(aquarium: Aquarium) {
-    when (aquarium) {
-        GUPPY -> println("Гуппи")
-        ANGELFISH -> println("Скалярия")
-        GOLDFISH -> println("Золотая рыбка")
-        SIAMESE_FIGHTING_FISH -> println("Петушок")
+    fun getNameFish() {
+        when (this) {
+            GUPPY -> println("Гуппи")
+            ANGELFISH -> println("Скалярия")
+            GOLDFISH -> println("Золотая рыбка")
+            SIAMESE_FIGHTING_FISH -> println("Петушок")
+        }
     }
 }
