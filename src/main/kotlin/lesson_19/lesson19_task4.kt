@@ -3,73 +3,52 @@ package org.example.lesson_19
 fun main() {
 
     val tank = Tank("Т-90")
+
     tank.armingWithBlueCartridges()
-    tank.armingWithRedCartridges()
     tank.armingWithGreenCartridges()
-    println(Cartridges.BLUE.impactForce)
-    Cartridges.GREEN.impactForce
-    Cartridges.RED.impactForce
+    tank.armingWithRedCartridges()
+    tank.shotBLUE()
+    tank.shotRED()
+    tank.shotGREEN()
 
 }
 
 enum class Cartridges(val impactForce: Int) {
-    BLUE(5) {
-        override fun shotCartridges(): String {
-            return "Стрельба Синими патронами"
-        }
-    },
-    GREEN(10) {
-        override fun shotCartridges(): String {
-            return "Стрельба Зелёными патронами"
-        }
-    },
-    RED(20) {
-        override fun shotCartridges(): String {
-            return "Стрельба Красными патронами"
-        }
-    };
-
-    abstract fun shotCartridges(): String
-
+    BLUE(5),
+    GREEN(10),
+    RED(20),
 }
-
 
 class Tank(
     val name: String,
     var cartridges: Int = 0,
+    var cartridgeTank: Int = 0,
 ) {
 
     fun armingWithBlueCartridges() {
-        armament(
-            cartridges = Cartridges.BLUE
-        )
+        cartridgeTank = cartridges + Cartridges.BLUE.impactForce
     }
 
     fun armingWithGreenCartridges() {
-        armament(
-            cartridges = Cartridges.GREEN
-        )
+        cartridgeTank = cartridges + Cartridges.GREEN.impactForce
     }
 
     fun armingWithRedCartridges() {
-        armament(
-            cartridges = Cartridges.RED
-        )
+        cartridgeTank = cartridges + Cartridges.RED.impactForce
     }
 
-//    fun shot() {
-//        when (cartridges) {
-//            Cartridges.BLUE -> cartridges = Cartridges.BLUE.impactForce
-//            Cartridges.GREEN -> cartridges = Cartridges.GREEN.impactForce
-//            Cartridges.RED -> cartridges = Cartridges.RED.impactForce
-//        }
-//    }
-}
+    fun shotBLUE() {
+//        val damage = cartridgeTank - Cartridges.BLUE.impactForce
+        println("Нанесенный урон ${Cartridges.BLUE.impactForce}")
+    }
 
-fun armament(cartridges: Cartridges) {
-    when (cartridges) {
-        Cartridges.BLUE -> println("Танк вооружен синими патронами")
-        Cartridges.GREEN -> println("Танк вооружен зелёными патронами")
-        Cartridges.RED -> println("Танк вооружен красными патронами")
+    fun shotGREEN() {
+//        val damage = cartridgeTank - Cartridges.GREEN.impactForce
+        println("Нанесенный урон ${Cartridges.GREEN.impactForce}")
+    }
+
+    fun shotRED() {
+//        val damage = cartridgeTank - Cartridges.RED.impactForce
+        println("Нанесенный урон ${Cartridges.RED.impactForce}")
     }
 }
