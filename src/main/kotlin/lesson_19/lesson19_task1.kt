@@ -5,29 +5,24 @@ import org.example.lesson_19.Aquarium.*
 fun main() {
 
     println("Вы можете добавить в свой аквариум рыб:")
-
-    val typesOfFish = listOf(GUPPY, ANGELFISH, GOLDFISH, SIAMESE_FIGHTING_FISH)
-
-    for (i in typesOfFish) {
-        when (i) {
-            i.getNameFish()
-        }
-    }
+//    for (i in Aquarium.values()) {
+//        i.getNameFish()
+//    }
+    println(Aquarium.entries)
 
 }
 
-enum class Aquarium {
-    GUPPY,
-    ANGELFISH,
-    GOLDFISH,
-    SIAMESE_FIGHTING_FISH;
-
-    fun getNameFish() {
-        when (this) {
-            GUPPY -> println("Гуппи")
-            ANGELFISH -> println("Скалярия")
-            GOLDFISH -> println("Золотая рыбка")
-            SIAMESE_FIGHTING_FISH -> println("Петушок")
-        }
-    }
+enum class Aquarium(var nameFish: String) {
+    GUPPY("Гуппи"),
+    ANGELFISH("Скалярия"),
+    GOLDFISH("Золотая рыбка"),
+    SIAMESE_FIGHTING_FISH("Петушок");
+//    fun getNameFish() {
+//        when (this) {
+//            GUPPY -> println("Гуппи")
+//            ANGELFISH -> println("Скалярия")
+//            GOLDFISH -> println("Золотая рыбка")
+//            SIAMESE_FIGHTING_FISH -> println("Петушок")
+//        }
+//    }
 }
