@@ -4,8 +4,8 @@ fun main() {
 
     val truck1 = Truck(
         carName = "Бычок",
-        passengers = 1,
-        weightOfCargo = 1,
+        passengers = 6,
+        weightOfCargo = 2,
     )
     val passengerCar1 = PassengerCar(
         carName = "Ласточка",
@@ -15,46 +15,18 @@ fun main() {
         carName = "Волга",
         passengers = 2,
     )
-    val truck2 = Truck(
-        carName = "Камаз",
-        passengers = 0,
-        weightOfCargo = 1,
-    )
 
-    truck1.loadingTruck(quantityOfCargo = truck1.weightOfCargo)
-    truck1.loadingPassengers(
-        passengersForTransportation = truck1.passengers
-    )
+    truck1.loadingTruck()
+    truck1.loadingPassengers()
     truck1.moving()
     truck1.unloadingTruck()
     truck1.unloadingPassengers()
-    passengerCar1.loadingPassengers(
-        passengersForTransportation = passengerCar1.passengers
-    )
+    passengerCar1.loadingPassengers()
     passengerCar1.moving()
     passengerCar1.unloadingPassengers()
-    passengerCar2.loadingPassengers(
-        passengersForTransportation = passengerCar2.passengers
-    )
+    passengerCar2.loadingPassengers()
     passengerCar2.moving()
     passengerCar2.unloadingPassengers()
-    truck2.loadingTruck(quantityOfCargo = truck2.weightOfCargo)
-    truck2.loadingPassengers(
-        passengersForTransportation = truck2.passengers
-    )
-    truck2.moving()
-    truck2.unloadingTruck()
-    truck2.unloadingPassengers()
-
-    val summaryQuantityOfCargo = truck1.quantityOfCargo + truck2.quantityOfCargo
-    val summaryNumberOfPassengers = truck1.passengersForTransportation +
-            passengerCar1.passengersForTransportation +
-            passengerCar2.passengersForTransportation + truck2.passengersForTransportation
-
-    println(
-        "Всего перевезено $summaryQuantityOfCargo тонны груза и" +
-                " $summaryNumberOfPassengers пассажиров"
-    )
 
 }
 
@@ -63,6 +35,8 @@ abstract class Car(
     val maxNumberOfPassengers: Int,
     val minNumberOfPassengers: Int,
     val passengers: Int,
+    val passengersForTransportation: Int,
+    val passengersDelivery: Int,
     val cargoTransportation: Boolean,
 ) {
 }
@@ -72,26 +46,24 @@ class Truck(
     maxNumberOfPassengers: Int = 1,
     minNumberOfPassengers: Int = 0,
     passengers: Int,
+    passengersForTransportation: Int = 0,
+    passengersDelivery: Int = 0,
     val maxQuantityOfCargo: Int = 2,
     var minQuantityOfCargo: Int = 0,
     val weightOfCargo: Int,
+    val quantityOfCargo: Int = 0,
+    val cargoDelivery: Int = 0,
 ) : Car(
-    carName, maxNumberOfPassengers, minNumberOfPassengers, passengers, cargoTransportation = true
+    carName, maxNumberOfPassengers, minNumberOfPassengers, passengers,
+    passengersForTransportation, passengersDelivery, cargoTransportation = true
 ), moving, loadingTruck, loadingPassenger {
 
-    var quantityOfCargo = if (weightOfCargo >= maxQuantityOfCargo) {
-        maxQuantityOfCargo
-    } else {
-        weightOfCargo
-    }
-    var passengersForTransportation: Int = if (passengers >= maxNumberOfPassengers) {
-        maxNumberOfPassengers
-    } else {
-        passengers
-    }
-
-
-    override fun loadingTruck(quantityOfCargo: Int) {
+    override fun loadingTruck() {
+        val quantityOfCargo = if (weightOfCargo >= maxQuantityOfCargo) {
+            maxQuantityOfCargo
+        } else {
+            weightOfCargo
+        }
         println(
             "В грузовую машину $carName загружают груз: $quantityOfCargo тонны, " +
                     "максимально возможный вес груза для перевозки: $maxQuantityOfCargo тонны"
@@ -99,10 +71,20 @@ class Truck(
     }
 
     override fun unloadingTruck() {
-        println("На грузовой машине $carName доставлена $quantityOfCargo тонна груза")
+        val cargoDelivery = if (weightOfCargo >= maxQuantityOfCargo) {
+            maxQuantityOfCargo
+        } else {
+            weightOfCargo
+        }
+        println("На грузовой машине $carName доставлена $cargoDelivery тонна груза")
     }
 
-    override fun loadingPassengers(passengersForTransportation: Int) {
+    override fun loadingPassengers() {
+        val passengersForTransportation: Int = if (passengers >= maxNumberOfPassengers) {
+            maxNumberOfPassengers
+        } else {
+            passengers
+        }
         println(
             "В грузовую машину $carName загружают для перевозки $passengersForTransportation " +
                     "пассажир, максимально возможное количество пассажиров " +
@@ -111,12 +93,27 @@ class Truck(
     }
 
     override fun unloadingPassengers() {
-        println("На грузовой машине $carName доставлен $passengersForTransportation пассажир")
+        val passengersDelivery = if (passengers >= maxNumberOfPassengers) {
+            maxNumberOfPassengers
+        } else {
+            passengers
+        }
+        println("На грузовой машине $carName доставлен $passengersDelivery пассажир")
     }
 
     override fun moving() {
-        println("Грузовая машина $carName везёт груз: ${quantityOfCargo}т")
-        println("Грузовая машина $carName везёт пассажиров: $passengersForTransportation")
+        val movingCargo = if (weightOfCargo >= maxQuantityOfCargo) {
+            maxQuantityOfCargo
+        } else {
+            weightOfCargo
+        }
+        val movingPassenger = if (passengers >= maxNumberOfPassengers) {
+            maxNumberOfPassengers
+        } else {
+            passengers
+        }
+        println("Грузовая машина $carName везёт груз: ${movingCargo}т")
+        println("Грузовая машина $carName везёт пассажиров: $movingPassenger")
     }
 }
 
@@ -125,22 +122,29 @@ class PassengerCar(
     maxNumberOfPassengers: Int = 3,
     minNumberOfPassengers: Int = 0,
     passengers: Int,
+    passengersForTransportation: Int = 0,
+    passengersDelivery: Int = 0,
     cargoTransportation: Boolean = false,
 ) : Car(
     carName, maxNumberOfPassengers, minNumberOfPassengers, passengers,
-    cargoTransportation = false
+    passengersForTransportation, passengersDelivery, cargoTransportation = false
 ), moving, loadingPassenger {
-    var passengersForTransportation = if (passengers >= maxNumberOfPassengers) {
-        maxNumberOfPassengers
-    } else {
-        passengers
-    }
 
     override fun moving() {
-        println("Легковая машина $carName выехала с $passengersForTransportation пассажирами")
+        val movingPassenger = if (passengers >= maxNumberOfPassengers) {
+            maxNumberOfPassengers
+        } else {
+            passengers
+        }
+        println("Легковая машина $carName везёт $movingPassenger пассажиров")
     }
 
-    override fun loadingPassengers(passengersForTransportation: Int) {
+    override fun loadingPassengers() {
+        val passengersForTransportation = if (passengers >= maxNumberOfPassengers) {
+            maxNumberOfPassengers
+        } else {
+            passengers
+        }
         println(
             "В легковую машину $carName для перевозки загружают $passengersForTransportation пассажира, " +
                     "максимально возможное количество пассажиров для перевозки: $maxNumberOfPassengers пассажира"
@@ -148,7 +152,12 @@ class PassengerCar(
     }
 
     override fun unloadingPassengers() {
-        println("Легковая машина $carName доставила $passengersForTransportation пассажира")
+        val passengersDelivery = if (passengers >= maxNumberOfPassengers) {
+            maxNumberOfPassengers
+        } else {
+            passengers
+        }
+        println("Легковая машина $carName доставила $passengersDelivery пассажира")
     }
 }
 
@@ -157,11 +166,11 @@ interface moving {
 }
 
 interface loadingTruck {
-    fun loadingTruck(quantityOfCargo: Int)
+    fun loadingTruck()
     fun unloadingTruck()
 }
 
 interface loadingPassenger {
-    fun loadingPassengers(passengersForTransportation: Int)
+    fun loadingPassengers()
     fun unloadingPassengers()
 }
