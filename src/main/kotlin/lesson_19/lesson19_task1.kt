@@ -10,10 +10,7 @@ fun main() {
 
     for (i in typesOfFish) {
         when (i) {
-            GUPPY -> GUPPY.getNameFish()
-            ANGELFISH -> ANGELFISH.getNameFish()
-            GOLDFISH -> GOLDFISH.getNameFish()
-            SIAMESE_FIGHTING_FISH -> SIAMESE_FIGHTING_FISH.getNameFish()
+            i.getNameFish()
         }
     }
 
