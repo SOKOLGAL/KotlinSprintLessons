@@ -4,12 +4,13 @@ fun main() {
 
     val tank = Tank("Т-90")
 
-    tank.armingWithBlueCartridges()
-    tank.armingWithGreenCartridges()
-    tank.armingWithRedCartridges()
-    tank.shotBLUE()
-    tank.shotRED()
-    tank.shotGREEN()
+    tank.armingCartridges(Cartridges.BLUE)
+    tank.armingCartridges(Cartridges.GREEN)
+    tank.armingCartridges(Cartridges.RED)
+    tank.armingCartridges(Cartridges.GREEN)
+    tank.shooting(Cartridges.BLUE)
+    tank.shooting(Cartridges.RED)
+    tank.shooting(Cartridges.GREEN)
 
 }
 
@@ -25,30 +26,28 @@ class Tank(
     var cartridgeTank: Int = 0,
 ) {
 
-    fun armingWithBlueCartridges() {
-        cartridgeTank = cartridges + Cartridges.BLUE.impactForce
+    fun armingCartridges(cartridges: Cartridges): MutableList<Cartridges> {
+        val listOfCartridges = mutableListOf(cartridges)
+        when (cartridges) {
+            Cartridges.BLUE -> listOfCartridges.add(Cartridges.BLUE)
+            Cartridges.GREEN -> listOfCartridges.add(Cartridges.GREEN)
+            Cartridges.RED -> listOfCartridges.add(Cartridges.RED)
+        }
+        return listOfCartridges
     }
 
-    fun armingWithGreenCartridges() {
-        cartridgeTank = cartridges + Cartridges.GREEN.impactForce
-    }
-
-    fun armingWithRedCartridges() {
-        cartridgeTank = cartridges + Cartridges.RED.impactForce
-    }
-
-    fun shotBLUE() {
-//        val damage = cartridgeTank - Cartridges.BLUE.impactForce
-        println("Нанесенный урон ${Cartridges.BLUE.impactForce}")
-    }
-
-    fun shotGREEN() {
-//        val damage = cartridgeTank - Cartridges.GREEN.impactForce
-        println("Нанесенный урон ${Cartridges.GREEN.impactForce}")
-    }
-
-    fun shotRED() {
-//        val damage = cartridgeTank - Cartridges.RED.impactForce
-        println("Нанесенный урон ${Cartridges.RED.impactForce}")
+    fun shooting(cartridges: Cartridges): MutableList<Cartridges> {
+        val listOfCartridges = mutableListOf(cartridges)
+        when (cartridges) {
+            Cartridges.BLUE -> listOfCartridges.remove(Cartridges.BLUE)
+            Cartridges.GREEN -> listOfCartridges.remove(Cartridges.GREEN)
+            Cartridges.RED -> listOfCartridges.remove(Cartridges.RED)
+        }
+        when (cartridges) {
+            Cartridges.BLUE -> println("Нанесенный урон ${Cartridges.BLUE.impactForce}")
+            Cartridges.GREEN -> println("Нанесенный урон ${Cartridges.GREEN.impactForce}")
+            Cartridges.RED -> println("Нанесенный урон ${Cartridges.RED.impactForce}")
+        }
+        return listOfCartridges
     }
 }
