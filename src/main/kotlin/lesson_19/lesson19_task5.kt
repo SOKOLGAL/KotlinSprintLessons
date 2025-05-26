@@ -2,30 +2,27 @@ package org.example.lesson_19
 
 fun main() {
 
-    println(
-        "Введите имя и пол пользователя. " +
-                "Если пол мужской введите 1, если пол женский введите 2"
-    )
+    println("Введите имя и пол пользователя")
 
     val human1 = Human(
         name = readLine(),
-        gender = readLine()
+        gender = getGender(gender = readLine().toString())
     )
     val human2 = Human(
         name = readLine(),
-        gender = readLine()
+        gender = getGender(gender = readLine().toString())
     )
     val human3 = Human(
         name = readLine(),
-        gender = readLine()
+        gender = getGender(gender = readLine().toString())
     )
     val human4 = Human(
         name = readLine(),
-        gender = readLine()
+        gender = getGender(gender = readLine().toString())
     )
     val human5 = Human(
         name = readLine(),
-        gender = readLine()
+        gender = getGender(gender = readLine().toString())
     )
 
     val list = listOf(human1, human2, human3, human4, human5)
@@ -37,21 +34,22 @@ fun main() {
 }
 
 enum class Gender(
-    val id: Int,
     val genderName: String,
 ) {
-    MALE(1, "мужской"),
-    FEMALE(2, "женский");
+    MALE("мужской"),
+    FEMALE("женский"),
+    NOBODY("неизвестен");
 
     override fun toString(): String {
         return genderName
     }
 }
 
-fun getGender(gender: Gender): String {
+fun getGender(gender: String): Gender {
     return when (gender) {
-        Gender.MALE -> "мужской"
-        Gender.FEMALE -> "женский"
+        "мужской" -> Gender.MALE
+        "женский" -> Gender.FEMALE
+        else -> {Gender.NOBODY}
     }
 }
 
