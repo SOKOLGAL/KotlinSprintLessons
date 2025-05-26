@@ -2,7 +2,7 @@ package org.example.lesson_19
 
 fun main() {
 
-    println("Введите имя и пол пользователя")
+    println("Введите имя и пол пользователя. Пол вводите печатными буквами, например, женский:")
 
     val human1 = Human(
         name = readLine(),
