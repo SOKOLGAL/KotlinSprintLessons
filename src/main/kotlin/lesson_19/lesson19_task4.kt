@@ -27,20 +27,13 @@ class Tank(
 
     fun armingCartridges(cartridges: Cartridges) {
         val listOfCartridges = mutableListOf(cartridges)
-        when (cartridges) {
-            Cartridges.BLUE -> listOfCartridges.add(Cartridges.BLUE)
-            Cartridges.GREEN -> listOfCartridges.add(Cartridges.GREEN)
-            Cartridges.RED -> listOfCartridges.add(Cartridges.RED)
-        }
+        listOfCartridges.add(cartridges)
     }
 
     fun shooting(cartridges: Cartridges) {
         val listOfShootingCartridges = mutableListOf(cartridges)
-        when (cartridges) {
-            Cartridges.BLUE -> listOfShootingCartridges.remove(Cartridges.BLUE)
-            Cartridges.GREEN -> listOfShootingCartridges.remove(Cartridges.GREEN)
-            Cartridges.RED -> listOfShootingCartridges.remove(Cartridges.RED)
-        }
+        listOfShootingCartridges.remove(cartridges)
+
         when (cartridges) {
             Cartridges.BLUE -> println("Нанесенный урон ${Cartridges.BLUE.impactForce}")
             Cartridges.GREEN -> println("Нанесенный урон ${Cartridges.GREEN.impactForce}")
