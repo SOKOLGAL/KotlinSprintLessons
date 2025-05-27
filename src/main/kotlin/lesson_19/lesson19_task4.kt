@@ -22,17 +22,16 @@ enum class Cartridges(val impactForce: Int) {
 
 class Tank(
     val name: String,
-    var cartridges: Int = 0,
+    var cartridge: Int = 0,
 ) {
+    val listOfCartridges = mutableListOf(cartridge)
 
     fun armingCartridges(cartridges: Cartridges) {
-        val listOfCartridges = mutableListOf(cartridges)
-        listOfCartridges.add(cartridges)
+        listOfCartridges.add(cartridge)
     }
 
     fun shooting(cartridges: Cartridges) {
-        val listOfShootingCartridges = mutableListOf(cartridges)
-        listOfShootingCartridges.remove(cartridges)
+        listOfCartridges.remove(cartridge)
 
         when (cartridges) {
             Cartridges.BLUE -> println("Нанесенный урон ${Cartridges.BLUE.impactForce}")
