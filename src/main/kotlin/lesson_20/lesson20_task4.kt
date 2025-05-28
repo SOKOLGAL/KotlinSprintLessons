@@ -7,11 +7,11 @@ fun main() {
         "Уилл Тёрнер", "Элизабет Суонн", "Джошими Гиббс"
     )
     val listOfLambda = listOfString.map { name ->
-        name.toList()
         println("Нажат элемент: $name")
     }
 
     val filterIndexListOfLambda = listOfLambda.filterIndexed { index, s -> (index % 2 == 0) }
+
     println(filterIndexListOfLambda)
 
 }
