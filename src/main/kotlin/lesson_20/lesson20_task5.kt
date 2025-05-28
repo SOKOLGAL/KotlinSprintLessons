@@ -17,7 +17,7 @@ class Robot(
 
     fun say(): (String) -> String {
         phrase: (String) -> String
-        phrase = {
+        phrase = { it: String ->
             listOf(
                 Phrase.PHRASE_ONE.getPhrases(),
                 Phrase.PHRASE_TWO.getPhrases(), Phrase.PHRASE_THREE.getPhrases(),
