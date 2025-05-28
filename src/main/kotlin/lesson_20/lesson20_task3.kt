@@ -8,12 +8,12 @@ fun main() {
 
     openDoor = {
         when (player.presenceOfKey) {
-            true -> println("Игрок открыл дверь").toString()
-            false -> println("Дверь закрыта").toString()
+            true -> "Игрок открыл дверь"
+            false -> "Дверь закрыта"
         }
     }
 
-    openDoor(player)
+    println(openDoor(player))
 
 }
 
