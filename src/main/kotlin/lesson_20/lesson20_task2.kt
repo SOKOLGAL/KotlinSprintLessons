@@ -9,11 +9,9 @@ fun main() {
 
     println("Текущее здоровье игрока ${player.name} = ${player.currentHealth}")
 
-    val healingPotion: (Player) -> Int
+    val healingPotion: (Player) -> Unit
 
-    healingPotion = {
-        player.maxHealth.also { player.currentHealth = it }
-    }
+    healingPotion = { it: Player -> it.currentHealth = it.maxHealth }
 
     healingPotion(player)
 
