@@ -6,12 +6,12 @@ fun main() {
 
     val userName: String = readLine().toString()
 
-    val printStringWithLambda: (String) -> Unit
+    val printStringWithLambda: (String) -> String
 
     printStringWithLambda = {
-        println("С наступающим Новым Годом, $it")
+        "С наступающим Новым Годом, $it"
     }
 
-    printStringWithLambda(userName)
+    println(printStringWithLambda(userName))
 
 }
