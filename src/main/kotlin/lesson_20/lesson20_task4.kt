@@ -10,7 +10,12 @@ fun main() {
         println("Нажат элемент: $name")
     }
 
-    val filterIndexListOfLambda = listOfLambda.filterIndexed { index, s -> (index % 2 == 0) }
+    val filterIndexListOfLambda = listOfLambda.forEachIndexed { index, action ->
+        if ((index + 1) % 2 == 0) {
+            action.invoke()
+            action()
+        }
+    }
 
     println(filterIndexListOfLambda)
 
