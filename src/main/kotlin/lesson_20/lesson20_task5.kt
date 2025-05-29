@@ -5,7 +5,7 @@ fun main() {
 
     robot.say()
     robot.setModifier(robot.phrase)
-    robot.say(robot.phraseInvert)
+    robot.say(modifier = )
 
 }
 
@@ -13,58 +13,29 @@ class Robot(
     val name: String,
 ) {
     var phrase: String = ""
-    var phraseInvert: String = ""
+    var listOfPhrase = listOf(
+        "Пьяный в зюзю",
+        "А был ли мальчик?",
+        "Не верь, не бойся, не проси",
+        "Большой брат следит за тобой",
+        "Потому что гладиолус"
+    )
+    private var modifier: (String) -> String = { it }
 
-    fun say(): (String) -> String {
-        phrase: (String) -> String
-        phrase = { it: String ->
-            listOf(
-                Phrase.PHRASE_ONE.getPhrases(),
-                Phrase.PHRASE_TWO.getPhrases(), Phrase.PHRASE_THREE.getPhrases(),
-                Phrase.PHRASE_FOUR.getPhrases(), Phrase.PHRASE_FIVE.getPhrases()
-            ).random()
-        }.toString()
+    fun say(): String {
+        phrase = listOfPhrase.random()
         println(phrase)
         return phrase
     }
 
-    fun setModifier(phrase: (String) -> String): String {
-        val phraseInvert = phrase.toString().reversed()
-        return phraseInvert
+    fun setModifier(phrase: String): String {
+        modifier = {
+            phrase.reversed()
+        }
+        return modifier.toString()
     }
 
-    fun say(phraseInvert: String) {
-        println(phraseInvert)
+    fun say(modifier: (String) -> String) {
+        println(modifier)
     }
-
-}
-
-enum class Phrase() {
-    PHRASE_ONE {
-        override fun getPhrases(): String {
-            return "Пьяный в зюзю"
-        }
-    },
-    PHRASE_TWO {
-        override fun getPhrases(): String {
-            return "А был ли мальчик?"
-        }
-    },
-    PHRASE_THREE {
-        override fun getPhrases(): String {
-            return "Не верь, не бойся, не проси"
-        }
-    },
-    PHRASE_FOUR {
-        override fun getPhrases(): String {
-            return "Большой брат следит за тобой"
-        }
-    },
-    PHRASE_FIVE {
-        override fun getPhrases(): String {
-            return "Потому что гладиолус"
-        }
-    };
-
-    abstract fun getPhrases(): String
 }
