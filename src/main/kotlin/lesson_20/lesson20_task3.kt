@@ -2,22 +2,22 @@ package org.example.lesson_20
 
 fun main() {
 
-    val player = Player("Вулкан")
+    val playerGame = PlayerGame("Вулкан")
 
-    val openDoor: (Player) -> String
+    val openDoor: (PlayerGame) -> String
 
     openDoor = {
-        when (player.presenceOfKey) {
+        when (playerGame.presenceOfKey) {
             true -> "Игрок открыл дверь"
             false -> "Дверь закрыта"
         }
     }
 
-    println(openDoor(player))
+    println(openDoor(playerGame))
 
 }
 
-class Player(
+class PlayerGame(
     val name: String,
     val presenceOfKey: Boolean = true,
 ) {
