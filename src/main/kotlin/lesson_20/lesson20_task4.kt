@@ -12,7 +12,6 @@ fun main() {
 
     val filterIndexListOfLambda = listOfLambda.forEachIndexed { index, action ->
         if ((index + 1) % 2 == 0) {
-            action.invoke()
             action()
         }
     }
