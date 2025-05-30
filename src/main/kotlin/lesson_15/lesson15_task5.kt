@@ -5,7 +5,7 @@ fun main() {
     val truck1 = Truck("Бычок")
     val passengerCar1 = PassengerCar("Ласточка")
     val passengerCar2 = PassengerCar("Волга")
-    val passengers = 5
+    val passengers = 6
     val weightOfCargo = 2
 
     truck1.loadingTruck(weightOfCargo)
