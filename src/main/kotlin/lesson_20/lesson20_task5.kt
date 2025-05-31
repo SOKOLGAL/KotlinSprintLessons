@@ -4,8 +4,10 @@ fun main() {
     val robot = Robot("Розалия")
 
     robot.say()
-    robot.setModifier(modifier = )
-    robot.say(modifier = )
+    robot.setModifier { str: String ->
+        str.reversed()
+    }
+    robot.say()
 
 }
 
@@ -22,19 +24,16 @@ class Robot(
     )
     private var modifier: (String) -> String = { it }
 
-    fun say(): String {
+    fun say() {
         phrase = listOfPhrase.random()
         println(phrase)
-        return phrase
     }
 
     fun setModifier(modifier: (String) -> String) {
-        this.modifier = {
-            phrase.reversed()
-        }
+        this.modifier = modifier
     }
 
-    fun say(modifier: (String) -> String) {
-        println(modifier)
+    fun say() {
+        println(modifier(phrase))
     }
 }
