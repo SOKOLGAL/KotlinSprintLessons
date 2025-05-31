@@ -5,13 +5,14 @@ import java.io.File
 fun main() {
 
     val wordsFile: File = File("words.txt")
+
     wordsFile.createNewFile()
-    wordsFile.writingWordToFile(wordsFile)
+    wordsFile.writingWordToFile("HeLlO")
     println(wordsFile.readLines())
 
 }
 
-fun File.writingWordToFile(wordsFile: File) {
-    val newWord = readln().lowercase()
-    this.appendText(newWord)
+fun File.writingWordToFile(words: String): Unit {
+    val word = words.lowercase()
+    return appendText(word)
 }
