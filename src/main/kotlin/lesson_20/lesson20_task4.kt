@@ -6,8 +6,8 @@ fun main() {
         "Джек Воробей", "Гектор Барбаросса",
         "Уилл Тёрнер", "Элизабет Суонн", "Джошими Гиббс"
     )
-    val listOfLambda = listOfString.map { name ->
-        println("Нажат элемент: $name")
+    val listOfLambda = listOfString.map { name: String ->
+        { println("Нажат элемент: $name") }
     }
 
     val filterIndexListOfLambda = listOfLambda.forEachIndexed { index, action ->
@@ -16,6 +16,6 @@ fun main() {
         }
     }
 
-    println(filterIndexListOfLambda)
+    return filterIndexListOfLambda
 
 }
