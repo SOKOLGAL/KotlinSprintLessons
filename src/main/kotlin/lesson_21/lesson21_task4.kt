@@ -12,7 +12,7 @@ fun main() {
 
 }
 
-fun File.writingWordToFile(words: String): Unit {
+fun File.writingWordToFile(words: String) {
     val word = words.lowercase()
-    return appendText(word)
+    appendText(word)
 }
