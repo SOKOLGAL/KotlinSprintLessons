@@ -8,6 +8,7 @@ fun main() {
         maxHealth = 100
     )
 
+
     println(playerHealth.isHealthy())
     
 }
