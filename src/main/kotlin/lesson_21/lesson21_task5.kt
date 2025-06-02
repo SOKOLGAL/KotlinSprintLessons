@@ -17,6 +17,8 @@ class Character(
     val value: Int = 100,
 ) : MaxCategory {
 
+    val listOfSkills = mutableListOf()
+
     override fun runningSpeed() {
         val key = "Скорость бега"
         val value = 100
