@@ -14,8 +14,8 @@ class Character(
     val name: String,
     var experiment: Int = 0,
     val key: String = "",
-    val value: Int = 100,
-) : MaxCategory {
+    val value: Int = 0,
+) : Skills {
 
     val listOfSkills = mutableListOf()
 
@@ -35,7 +35,7 @@ class Character(
     }
 }
 
-interface MaxCategory : Map<String, Int> {
+interface Skills : Map<String, Int> {
     fun runningSpeed()
     fun jumpingHeight()
     fun increasingStrength()
