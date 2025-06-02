@@ -14,7 +14,6 @@ fun main() {
 class Robot(
     val name: String,
 ) {
-    var phrase: String = ""
     var listOfPhrase = listOf(
         "Пьяный в зюзю",
         "А был ли мальчик?",
@@ -25,8 +24,7 @@ class Robot(
     private var modifier: (String) -> String = { it }
 
     fun say() {
-        phrase = listOfPhrase.random()
-        println(phrase)
+        println(listOfPhrase.random())
     }
 
     fun setModifier(modifier: (String) -> String) {
@@ -34,6 +32,6 @@ class Robot(
     }
 
     fun say() {
-        println(modifier(phrase))
+        println(modifier(listOfPhrase.random()))
     }
 }
