@@ -1,14 +1,12 @@
 package org.example.lesson_21
 
 fun main() {
-    
+  
     val playerHealth = PlayerHealth(
         name = "Джек",
         currentHealth = 100,
         maxHealth = 100
     )
-
-
     println(playerHealth.isHealthy())
     
 }
@@ -21,7 +19,5 @@ class PlayerHealth(
 }
 
 fun PlayerHealth.isHealthy(): Boolean {
-    if (currentHealth == maxHealth) {
-        return true
-    } else {return false}
+    return currentHealth == maxHealth
 }
