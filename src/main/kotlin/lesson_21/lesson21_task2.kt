@@ -11,7 +11,6 @@ fun main() {
 }
 
 fun List<Int>.evenNumbersSum(): Int {
-    val listOfInt: List<Int> = this
-    val sumOfEvenNum = listOfInt.filter { it % 2 == 0 }.sum()
+    val sumOfEvenNum = this.filter { it % 2 == 0 }.sum()
     return sumOfEvenNum
 }
