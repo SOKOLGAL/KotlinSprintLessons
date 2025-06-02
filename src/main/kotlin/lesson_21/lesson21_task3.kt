@@ -20,7 +20,5 @@ class PlayerHealth(
 }
 
 fun PlayerHealth.isHealthy(): Boolean {
-    if (currentHealth == maxHealth) {
-        return true
-    } else {return false}
+    return currentHealth == maxHealth
 }
