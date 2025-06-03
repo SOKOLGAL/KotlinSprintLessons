@@ -1,7 +1,7 @@
 package org.example.lesson_21
 
 fun main() {
-
+  
     val playerHealth = PlayerHealth(
         name = "Джек",
         currentHealth = 100,
@@ -9,7 +9,7 @@ fun main() {
     )
 
     println(playerHealth.isHealthy())
-
+    
 }
 
 class PlayerHealth(
