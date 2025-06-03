@@ -23,10 +23,6 @@ class Robot(
     )
     private var modifier: (String) -> String = { it }
 
-    fun say() {
-        println(listOfPhrase.random())
-    }
-
     fun setModifier(modifier: (String) -> String) {
         this.modifier = modifier
     }
