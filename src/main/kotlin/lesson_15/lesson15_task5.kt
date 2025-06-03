@@ -19,13 +19,13 @@ fun main() {
         passengers -= passengerCar2.currentNumberOfPassengers
     }
 
-    truck1.moving(truck1.currentCargoQuantity, truck1.currentNumberOfPassengers)
-    passengerCar1.moving(currentCargoQuantity = 0, passengerCar1.currentNumberOfPassengers)
-    passengerCar2.moving(currentCargoQuantity = 0, passengerCar2.currentNumberOfPassengers)
-    truck1.unloadingTruck(truck1.currentCargoQuantity)
-    truck1.unloadingPassengers(truck1.currentNumberOfPassengers)
-    passengerCar1.unloadingPassengers(passengerCar1.currentNumberOfPassengers)
-    passengerCar2.unloadingPassengers(passengerCar2.currentNumberOfPassengers)
+    truck1.moving()
+    passengerCar1.moving()
+    passengerCar2.moving()
+    truck1.unloadingTruck()
+    truck1.unloadingPassengers()
+    passengerCar1.unloadingPassengers()
+    passengerCar2.unloadingPassengers()
 
 }
 
@@ -33,7 +33,6 @@ abstract class Car(
     val maxNumberOfPassengers: Int,
     val minNumberOfPassengers: Int,
     var currentNumberOfPassengers: Int,
-    val cargoTransportation: Boolean,
 ) {
 }
 
@@ -42,11 +41,11 @@ class Truck(
     minNumberOfPassengers: Int = 0,
     passengersForTransportation: Int = 0,
     val maxQuantityOfCargo: Int = 2,
-    val mixQuantityOfCargo: Int = 0,
+    val minQuantityOfCargo: Int = 0,
     var currentCargoQuantity: Int = 0,
 ) : Car(
     maxNumberOfPassengers,
-    passengersForTransportation, minNumberOfPassengers, cargoTransportation = true
+    passengersForTransportation, minNumberOfPassengers
 ), moving, loadingTruck, loadingPassenger {
 
     override fun loadingTruck(weightOfCargo: Int) {
@@ -61,9 +60,9 @@ class Truck(
         )
     }
 
-    override fun unloadingTruck(currentCargoQuantity: Int) {
+    override fun unloadingTruck() {
         println("На грузовой машине доставлена $currentCargoQuantity тонна груза")
-        val currentCargoQuantity = mixQuantityOfCargo
+        val currentCargoQuantity = minQuantityOfCargo
     }
 
     override fun loadingPassengers(passengers: Int) {
@@ -79,12 +78,12 @@ class Truck(
         )
     }
 
-    override fun unloadingPassengers(currentNumberOfPassengers: Int) {
+    override fun unloadingPassengers() {
         println("На грузовой машине доставлен $currentNumberOfPassengers пассажир")
         val currentNumberOfPassengers = minNumberOfPassengers
     }
 
-    override fun moving(currentCargoQuantity: Int, currentNumberOfPassengers: Int) {
+    override fun moving() {
         println("Грузовая машина везёт груз: ${currentCargoQuantity}т")
         println("Грузовая машина везёт пассажиров: $currentNumberOfPassengers")
         currentCargoQuantity
@@ -96,13 +95,12 @@ class PassengerCar(
     maxNumberOfPassengers: Int = 3,
     minNumberOfPassengers: Int = 0,
     currentNumberOfPassengers: Int = 0,
-    cargoTransportation: Boolean = false,
 ) : Car(
     maxNumberOfPassengers,
-    currentNumberOfPassengers, minNumberOfPassengers, cargoTransportation = false
+    currentNumberOfPassengers, minNumberOfPassengers
 ), moving, loadingPassenger {
 
-    override fun moving(currentCargoQuantity: Int, currentNumberOfPassengers: Int) {
+    override fun moving() {
         println("Легковая машина везёт $currentNumberOfPassengers пассажира")
         currentNumberOfPassengers
     }
@@ -119,22 +117,22 @@ class PassengerCar(
         )
     }
 
-    override fun unloadingPassengers(currentNumberOfPassengers: Int) {
+    override fun unloadingPassengers() {
         println("Легковая машина доставила $currentNumberOfPassengers пассажира")
         val currentNumberOfPassengers = minNumberOfPassengers
     }
 }
 
 interface moving {
-    fun moving(currentCargoQuantity: Int, currentNumberOfPassengers: Int)
+    fun moving()
 }
 
 interface loadingTruck {
     fun loadingTruck(weightOfCargo: Int)
-    fun unloadingTruck(currentCargoQuantity: Int)
+    fun unloadingTruck()
 }
 
 interface loadingPassenger {
     fun loadingPassengers(passengers: Int)
-    fun unloadingPassengers(currentNumberOfPassengers: Int)
+    fun unloadingPassengers()
 }
