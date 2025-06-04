@@ -9,7 +9,6 @@ fun main() {
 
     println(regularBook1 == regularBook2)
 //    TODO для class RegularBook сравниваются ссылки на объекты в памяти
-
     println(dataBook1 == dataBook2)
 //    TODO для data class DataBook сравниваются проинициализированные данные
 
