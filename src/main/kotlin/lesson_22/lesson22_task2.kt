@@ -6,8 +6,7 @@ fun main() {
     val dataRegularBook = DataRegularBook("Мастер и Маргарита", "Булгаков М. А.")
 
     println(ordinaryBook)
-//    TODO для class OrdinaryBook переопредилила стандартный toString(), иначе
-//     в консоль выводится строковое представление по умолчанию
+//    TODO для class OrdinaryBook в консоль выводится строковое представление по умолчанию
     println(dataRegularBook)
 //    TODO для data class DataRegularBook не нужно тело класса
 
@@ -16,11 +15,7 @@ fun main() {
 class OrdinaryBook(
     val name: String,
     val author: String,
-) {
-    override fun toString(): String {
-        return "OrdinaryBook(name='$name', author='$author')"
-    }
-}
+) {}
 
 data class DataRegularBook(
     val name: String,
