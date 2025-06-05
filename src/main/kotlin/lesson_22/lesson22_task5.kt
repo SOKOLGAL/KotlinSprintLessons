@@ -15,11 +15,10 @@ fun main() {
         distanceOfEventFromEarth = 4.24
     )
 
-    val (eventName, eventDescription, dateAndTimeOfEvent, distanceOfEventFromEarth) = galacticGuide
-
     println(
-        "$eventName \n $eventDescription \n $dateAndTimeOfEvent \n" +
-                " всего лишь в $distanceOfEventFromEarth световых годах от Земли"
+        "${galacticGuide.component1()} \n ${galacticGuide.component2()} \n " +
+                "${galacticGuide.component3()} \n всего лишь в ${galacticGuide.component4()} " +
+                "световых годах от Земли"
     )
 
 }
