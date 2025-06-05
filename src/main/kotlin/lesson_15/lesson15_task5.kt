@@ -61,7 +61,7 @@ class Truck(
     }
 
     override fun unloadingTruck() {
-        println("На грузовой машине доставлена $currentCargoQuantity тонна груза")
+        println("На грузовой машине доставлены $currentCargoQuantity тонны груза")
         val currentCargoQuantity = minQuantityOfCargo
     }
 
