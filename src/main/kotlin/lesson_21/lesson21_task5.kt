@@ -16,5 +16,5 @@ fun main() {
 }
 
 fun Map<String, Int>.maxCategory(): String {
-    return this.maxBy { it.value }.key
+    return this.maxByOrNull { it.value }?.key ?: "NULL"
 }
