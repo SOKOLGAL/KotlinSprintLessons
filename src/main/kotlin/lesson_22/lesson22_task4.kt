@@ -5,7 +5,7 @@ import org.example.lesson_22.MainScreenViewModel.MainScreenState
 fun main() {
 
     val mainScreenViewModel = MainScreenViewModel(MainScreenState("Загружаемые данные"))
-    println(mainScreenViewModel.stateStorage.changingState())
+    println(mainScreenViewModel.changingState())
     mainScreenViewModel.loadData()
 
 }
@@ -13,9 +13,6 @@ fun main() {
 class MainScreenViewModel(
     val mainScreenState: MainScreenState,
 ) {
-    val stateStorage = StateStorage(
-        mainScreenState = this.mainScreenState
-    )
 
     data class MainScreenState(
         var data: String,
@@ -29,11 +26,7 @@ class MainScreenViewModel(
             println(mainScreenState)
         }
     }
-}
 
-data class StateStorage(
-    val mainScreenState: MainScreenState,
-) {
     fun changingState(): MainScreenState {
         return mainScreenState.copy(isLoading = true)
     }
